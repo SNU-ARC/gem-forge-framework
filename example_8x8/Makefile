@@ -79,7 +79,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=`nproc`
+THREADS=64
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
