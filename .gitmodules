@@ -1,12 +1,12 @@
 [submodule "llvm"]
 	path = llvm
-	url = git@github.com:PolyArch/gem-forge-llvm.git
+	url = https://github.com/SNU-ARC/gem-forge-llvm
 [submodule "transform"]
 	path = transform
-	url = git@github.com:PolyArch/gem-forge-transform.git
+	url = https://github.com/SNU-ARC/gem-forge-transform
 [submodule "gem5"]
 	path = gem5
-	url = git@github.com:PolyArch/gem-forge-gem5.git
+	url = https://github.com/SNU-ARC/gem-forge-gem5
 [submodule "lib/protobuf"]
 	path = lib/protobuf
 	url = git@github.com:protocolbuffers/protobuf.git
