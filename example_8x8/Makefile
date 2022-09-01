@@ -310,11 +310,11 @@ stream.io-float.sim: stream.exe
 		--llc-select-low-bit=10 \
 
 .PHONY: sim-o3
-sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-all: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
 
 .PHONY: sim-all
