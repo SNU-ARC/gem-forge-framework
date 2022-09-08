@@ -1,6 +1,6 @@
 
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -112,7 +112,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
-	--mem-channels=2 \
+	--mem-channels=6 \
 	--mem-size=16GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
@@ -126,7 +126,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
@@ -171,6 +171,7 @@ stream.o8.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.o8-float.sim
 stream.o8-float.sim: stream.exe
@@ -227,7 +228,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
-	--mem-channels=2 \
+	--mem-channels=6 \
 	--mem-size=16GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
@@ -241,7 +242,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
@@ -285,6 +286,7 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
@@ -317,6 +319,10 @@ sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim
 .PHONY: sim-io
 sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
+
+.PHONY: sim-ssp
+sim-ssp: stream.io.sim stream.io-float.sim stream.o8.sim stream.o8-float.sim
+	echo "Simulation SSP core all done!"
 
 .PHONY: sim-all
 sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim

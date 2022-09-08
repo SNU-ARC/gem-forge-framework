@@ -1,6 +1,6 @@
 
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -323,6 +323,10 @@ sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim
 .PHONY: sim-io
 sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
+
+.PHONY: sim-ssp
+sim-ssp: stream.io.sim stream.io-float.sim stream.o8.sim stream.o8-float.sim
+	echo "Simulation SSP core all done!"
 
 .PHONY: sim-all
 sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
