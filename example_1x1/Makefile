@@ -1,7 +1,17 @@
-
+# [ARC-SJ] GemForge source lists
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
-FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va_cond/omp_va_cond.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
+
+# [ARC-SJ] GemForge flag lists
+#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only -v
+#FLAGS=-O1 -DGEM_FORGE -fopenmp -std=c11 -gline-tables-only -v # [ARC-SJ] Only for code debug
+
+# [ARC-SJ] To compile graph-based ANNS example
+ANNS_SRC_DIR=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph_anns
+SRC=${ANNS_SRC_DIR}/optimized_search.cpp
+FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only -lboost -ltcmalloc_minimal -Wall -DINFO -g3 -v -I${ANNS_SRC_DIR}/*.h
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 CC=${LLVM_RELEASE}/clang
@@ -112,7 +122,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
-	--mem-channels=6 \
+	--mem-channels=2 \
 	--mem-size=16GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
@@ -211,7 +221,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=64 \
+	--l1tlb-size=512 \
 	--l1tlb-assoc=8 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
@@ -228,7 +238,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
-	--mem-channels=6 \
+	--mem-channels=2 \
 	--mem-size=16GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
@@ -242,10 +252,11 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=2MB \
+	--l2_size=256MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
+	--gem-forge-idea-inorder-cpu \
 	--options=${THREADS}
 
 .PHONY: valid.io.sim
@@ -286,7 +297,7 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
-#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+	#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
