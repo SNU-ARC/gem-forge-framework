@@ -1,19 +1,15 @@
-# [ARC-SJ] GemForge source lists
+
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va_cond/omp_va_cond.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va_cond/omp_va_cond.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
-
-# [ARC-SJ] GemForge flag lists
-#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only -v
-#FLAGS=-O1 -DGEM_FORGE -fopenmp -std=c11 -gline-tables-only -v # [ARC-SJ] Only for code debug
-
-# [ARC-SJ] To compile graph-based ANNS example
-ANNS_SRC_DIR=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph_anns
-SRC=${ANNS_SRC_DIR}/optimized_search.cpp
-FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only -lboost -ltcmalloc_minimal -Wall -DINFO -g3 -v -I${ANNS_SRC_DIR}/*.h
+FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
+#CC=${LLVM_RELEASE}/clang++
 CC=${LLVM_RELEASE}/clang
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
@@ -36,7 +32,9 @@ raw.ll: raw.bc
 	${LLVM_DIS} $^ -o $@
 
 INST_UID=inst.uid
-TRACE_FUNC=.omp_outlined.
+#TRACE_FUNC=foo
+TRACE_FUNC=vector_addition_host
+#TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
 traced.bc: raw.bc
@@ -141,7 +139,6 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
 	--options=${THREADS}
-#	--mem-type=DDR4_2400_16x4 \
 
 .PHONY: valid.o8.sim
 valid.o8.sim: valid.exe
@@ -207,6 +204,9 @@ stream.o8-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
+
 IO_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
 	--caches \
@@ -221,8 +221,8 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=512 \
-	--l1tlb-assoc=8 \
+	--l1tlb-size=96 \
+	--l1tlb-assoc=6 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
@@ -252,11 +252,10 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=256MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
-	--gem-forge-idea-inorder-cpu \
 	--options=${THREADS}
 
 .PHONY: valid.io.sim
@@ -297,7 +296,14 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
-	#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+#		--debug-flags=CoalescedStream \
+#		--debug-flags=ExecFunc \
+#		--debug-flags=StreamBase \
+#		--debug-flags=StreamElement \
+#		--debug-flags=AddrGenCallback \
+#		--debug-flags=ISAStreamEngine \
+#		--debug-flags=StreamEngineBase \
+#		--gem-forge-stream-engine-default-run-ahead-length=8 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
@@ -322,6 +328,9 @@ stream.io-float.sim: stream.exe
 		--gem-forge-stream-engine-enable-float-advance-migrate \
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
+
+#		--gem-forge-stream-engine-mlc-stream-buffer-init-num-entries=32 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 
 .PHONY: sim-o3
 sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
