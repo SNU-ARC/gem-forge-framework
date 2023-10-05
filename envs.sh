@@ -1,5 +1,5 @@
 export GEM_FORGE_TOP=$(pwd)
-export CORES=8
+export CORES=`nproc`
 # You can change this to store result to different place.
 export GEM_FORGE_RESULT_PATH=$GEM_FORGE_TOP/result
 
