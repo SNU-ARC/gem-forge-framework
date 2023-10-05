@@ -7,7 +7,7 @@
 [submodule "gem5"]
 	path = gem5
 	url = https://github.com/SNU-ARC/gem-forge-gem5
-  branch = skhynix-ndp
+  branch = main_snuarc
 [submodule "lib/protobuf"]
 	path = lib/protobuf
 	url = git@github.com:protocolbuffers/protobuf.git
