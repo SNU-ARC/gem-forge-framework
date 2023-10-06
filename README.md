@@ -3,7 +3,7 @@
 This is the top level of Gem Forge framework. It is used in these work:
 
 ```
-Z. Wang and T. Nowatzki
+Z. Wang and T. Nowatzki.
 "Stream-based Memory Access Specialization for General Purpose Processors,"
 2019 ACM/IEEE 46th Annual International Symposium on Computer Architecture (ISCA)
 
