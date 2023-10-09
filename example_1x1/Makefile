@@ -13,6 +13,7 @@ LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 CC=${LLVM_RELEASE}/clang
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
+LLVM_ASM=${LLVM_RELEASE}/llc
 
 GEM_FORGE_TRANSFORM_SO=${GEM_FORGE_TOP}/transform/build/src/libLLVMTDGPass.so
 
@@ -30,6 +31,10 @@ raw.bc: ${SRC}
 
 raw.ll: raw.bc
 	${LLVM_DIS} $^ -o $@
+
+# Generate assembly code from IR
+raw.S: raw.ll
+	${LLVM_ASM} $^ -o $@
 
 INST_UID=inst.uid
 #TRACE_FUNC=foo
