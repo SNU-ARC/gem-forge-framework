@@ -2,7 +2,7 @@
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va_cond/omp_va_cond.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
@@ -83,7 +83,7 @@ stream.bc: traced.bc raw.bc
 
 .PHONY: clean
 clean:
-	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace
+	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace *.S
 
 .PHONY: clean-all
 clean-all: clean
