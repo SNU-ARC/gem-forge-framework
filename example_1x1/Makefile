@@ -93,6 +93,7 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synthetic_vector_96dimension'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -143,7 +144,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
-	--options=${THREADS}
+	--options=${ARGUMENTS}
 
 .PHONY: valid.o8.sim
 valid.o8.sim: valid.exe
@@ -261,7 +262,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
-	--options=${THREADS}
+	--options=${ARGUMENTS}
 
 .PHONY: valid.io.sim
 valid.io.sim: valid.exe
