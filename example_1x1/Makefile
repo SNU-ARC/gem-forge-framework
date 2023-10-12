@@ -1,11 +1,19 @@
 
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
+#CC=${LLVM_RELEASE}/clang++
 CC=${LLVM_RELEASE}/clang
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
+LLVM_ASM=${LLVM_RELEASE}/llc
 
 GEM_FORGE_TRANSFORM_SO=${GEM_FORGE_TOP}/transform/build/src/libLLVMTDGPass.so
 
@@ -24,8 +32,14 @@ raw.bc: ${SRC}
 raw.ll: raw.bc
 	${LLVM_DIS} $^ -o $@
 
+# Generate assembly code from IR
+raw.S: raw.ll
+	${LLVM_ASM} $^ -o $@
+
 INST_UID=inst.uid
-TRACE_FUNC=.omp_outlined.
+#TRACE_FUNC=foo
+TRACE_FUNC=vector_addition_host
+#TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
 traced.bc: raw.bc
@@ -69,7 +83,7 @@ stream.bc: traced.bc raw.bc
 
 .PHONY: clean
 clean:
-	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace
+	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace *.S
 
 .PHONY: clean-all
 clean-all: clean
@@ -79,6 +93,7 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synthetic_vector_96dimension'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -125,11 +140,11 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
-	--options=${THREADS}
+	--options=${ARGUMENTS}
 
 .PHONY: valid.o8.sim
 valid.o8.sim: valid.exe
@@ -169,6 +184,7 @@ stream.o8.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.o8-float.sim
 stream.o8-float.sim: stream.exe
@@ -194,6 +210,9 @@ stream.o8-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
+
 IO_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
 	--caches \
@@ -208,8 +227,8 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=64 \
-	--l1tlb-assoc=8 \
+	--l1tlb-size=96 \
+	--l1tlb-assoc=6 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
@@ -239,11 +258,11 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
-	--options=${THREADS}
+	--options=${ARGUMENTS}
 
 .PHONY: valid.io.sim
 valid.io.sim: valid.exe
@@ -283,6 +302,14 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--debug-flags=CoalescedStream \
+#		--debug-flags=ExecFunc \
+#		--debug-flags=StreamBase \
+#		--debug-flags=StreamElement \
+#		--debug-flags=AddrGenCallback \
+#		--debug-flags=ISAStreamEngine \
+#		--debug-flags=StreamEngineBase \
+#		--gem-forge-stream-engine-default-run-ahead-length=8 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
@@ -308,13 +335,20 @@ stream.io-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
+#		--gem-forge-stream-engine-mlc-stream-buffer-init-num-entries=32 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
+
 .PHONY: sim-o3
-sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-all: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
+
+.PHONY: sim-ssp
+sim-ssp: stream.io.sim stream.io-float.sim stream.o8.sim stream.o8-float.sim
+	echo "Simulation SSP core all done!"
 
 .PHONY: sim-all
 sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim

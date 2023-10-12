@@ -1,5 +1,6 @@
 
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -78,7 +79,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=1
+THREADS=4
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -101,10 +102,10 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=4 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=4 \
+	--mesh-rows=2 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -125,7 +126,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
@@ -169,6 +170,7 @@ stream.o8.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.o8-float.sim
 stream.o8-float.sim: stream.exe
@@ -194,6 +196,9 @@ stream.o8-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
+
 IO_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
 	--caches \
@@ -215,10 +220,10 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=4 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=4 \
+	--mesh-rows=2 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -239,7 +244,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
@@ -308,13 +313,20 @@ stream.io-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
+#		--gem-forge-stream-engine-mlc-stream-buffer-init-num-entries=32 \
+		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
+
 .PHONY: sim-o3
-sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-all: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
+
+.PHONY: sim-ssp
+sim-ssp: stream.io.sim stream.io-float.sim stream.o8.sim stream.o8-float.sim
+	echo "Simulation SSP core all done!"
 
 .PHONY: sim-all
 sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim

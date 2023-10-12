@@ -1,9 +1,36 @@
+# [ARC-SJ] GemForge source lists
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va_cond/omp_va_cond.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
 
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+# [ARC-SJ] GemForge flag lists
+#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only -v
+#FLAGS=-O1 -DGEM_FORGE -fopenmp -std=c11 -gline-tables-only -v # [ARC-SJ] Only for code debug
+
+# [ARC-SJ] To compile graph-based ANNS example
+ANNS_SRC_DIR=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph_anns
+SRC_0=${ANNS_SRC_DIR}/optimized_search.cpp \
+#			${ANNS_SRC_DIR}/index_ssg.h \
+#			${ANNS_SRC_DIR}/index_random.h \
+#			${ANNS_SRC_DIR}/util.h 
+SRC_1=${ANNS_SRC_DIR}/index.cpp \
+#			${ANNS_SRC_DIR}/index.h \
+#			${ANNS_SRC_DIR}/distance.h \
+#			${ANNS_SRC_DIR}/parameters.h 
+SRC_2=${ANNS_SRC_DIR}/index_ssg.cpp \
+#			${ANNS_SRC_DIR}/index_ssg.h \
+#			${ANNS_SRC_DIR}/index.h \
+#			${ANNS_SRC_DIR}/neighbor.h \
+#			${ANNS_SRC_DIR}/parameters.h \
+#			${ANNS_SRC_DIR}/util.h 
+SRC_3=${ANNS_SRC_DIR}/index_random.cpp 
+SRC_4=${ANNS_SRC_DIR}/util.cpp 
+
+FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only -lboost -ltcmalloc_minimal -Wall -DINFO -g3 -v 
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
-CC=${LLVM_RELEASE}/clang
+CC=${LLVM_RELEASE}/clang++
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
 
@@ -17,8 +44,29 @@ GEM5_INC=${GEM_FORGE_TOP}/gem5/include
 GEM5_OPS=${GEM_FORGE_TOP}/gem5/util/m5/m5op_x86.S
 
 # Gem Forge requires the bitcode named.
-raw.bc: ${SRC}
-	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@
+optimized_search.bc: ${SRC_0}
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${ANNS_SRC_DIR} -o $@ 
+	${OPT} -instnamer $@ -o $@
+
+index.bc: ${SRC_1}
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${ANNS_SRC_DIR} -o $@ 
+	${OPT} -instnamer $@ -o $@
+
+index_ssg.bc: ${SRC_2}
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${ANNS_SRC_DIR} -o $@ 
+	${OPT} -instnamer $@ -o $@
+
+index_random.bc: ${SRC_3}
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${ANNS_SRC_DIR} -o $@ 
+	${OPT} -instnamer $@ -o $@
+
+util.bc: ${SRC_4}
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${ANNS_SRC_DIR} -o $@ 
+	${OPT} -instnamer $@ -o $@
+
+raw.bc: optimized_search.bc index.bc index_ssg.bc index_random.bc util.bc
+#	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@ 
+	${LLVM_RELEASE}/llvm-link $^ -o raw.bc
 	${OPT} -instnamer $@ -o $@
 
 raw.ll: raw.bc
@@ -125,11 +173,12 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=2MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
 	--options=${THREADS}
+#	--mem-type=DDR4_2400_16x4 \
 
 .PHONY: valid.o8.sim
 valid.o8.sim: valid.exe
@@ -169,6 +218,7 @@ stream.o8.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.o8-float.sim
 stream.o8-float.sim: stream.exe
@@ -208,7 +258,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=64 \
+	--l1tlb-size=512 \
 	--l1tlb-assoc=8 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
@@ -239,10 +289,11 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
 	--l2_lat=16 \
-	--l2_size=1MB \
+	--l2_size=256MB \
 	--l2_assoc=16 \
 	--l3_lat=20 \
 	--fast-forward=-1 \
+	--gem-forge-idea-inorder-cpu \
 	--options=${THREADS}
 
 .PHONY: valid.io.sim
@@ -283,6 +334,7 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
+	#		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
@@ -309,12 +361,16 @@ stream.io-float.sim: stream.exe
 		--llc-select-low-bit=10 \
 
 .PHONY: sim-o3
-sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-all: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
+
+.PHONY: sim-ssp
+sim-ssp: stream.io.sim stream.io-float.sim stream.o8.sim stream.o8-float.sim
+	echo "Simulation SSP core all done!"
 
 .PHONY: sim-all
 sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
