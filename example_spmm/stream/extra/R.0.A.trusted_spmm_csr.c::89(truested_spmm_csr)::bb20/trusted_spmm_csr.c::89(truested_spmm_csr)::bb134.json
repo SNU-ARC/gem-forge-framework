@@ -1,0 +1,14 @@
+{
+ "region": "trusted_spmm_csr.c::89(truested_spmm_csr)::bb134",
+ "relativePath": "R.0.A.trusted_spmm_csr.c::89(truested_spmm_csr)::bb20/trusted_spmm_csr.c::89(truested_spmm_csr)::bb134.info",
+ "totalAliveStreams": 21,
+ "totalAliveCoalescedStreams": 10,
+ "streams": [],
+ "coalescedStreamIds": [],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}

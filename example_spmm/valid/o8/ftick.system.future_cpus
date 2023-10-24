@@ -1,0 +1,17 @@
+======================
+94.60           1182175000         1037603 : truested_spmm_csr
+2.44             30506000           49426 : __vfprintf_internal
+0.73              9117500           33582 : _IO_new_file_xsputn
+0.36              4486500            9020 : _IO_new_do_write
+0.29              3613000            3690 : _IO_printf
+0.28              3492000            4874 : _itoa_word
+0.24              3014500            5986 : _IO_new_file_write
+0.23              2912000            1230 : _init
+0.22              2809000           12628 : __strchrnul_sse2
+0.21              2670000            3690 : _IO_new_file_overflow
+0.17              2104500            5330 : __memcpy_sse2_unaligned_erms
+0.11              1316000            1312 : __libc_write
+0.06               717000            1230 : __memcpy_sse2_unaligned
+0.04               475500            1476 : __mempcpy_sse2_unaligned
+0.02               208500              21 : main
+0.00                  500               4 : m5_reset_stats

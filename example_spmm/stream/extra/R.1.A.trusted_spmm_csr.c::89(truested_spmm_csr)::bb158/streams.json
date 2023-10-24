@@ -1,0 +1,75 @@
+{
+ "region": "",
+ "relativePath": "",
+ "totalAliveStreams": 0,
+ "totalAliveCoalescedStreams": 0,
+ "streams": [
+  {
+   "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb158 bb158::i159(phi))",
+   "id": "91",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "91",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "IV_NO_MEM_DEPENDENT",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  }
+ ],
+ "coalescedStreamIds": [],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}

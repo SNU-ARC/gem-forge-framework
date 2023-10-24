@@ -1,0 +1,14 @@
+{
+ "region": "",
+ "relativePath": "",
+ "totalAliveStreams": 0,
+ "totalAliveCoalescedStreams": 0,
+ "streams": [],
+ "coalescedStreamIds": [],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}

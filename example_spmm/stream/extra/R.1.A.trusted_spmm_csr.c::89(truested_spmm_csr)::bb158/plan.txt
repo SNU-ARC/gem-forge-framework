@@ -1,0 +1,8 @@
+DEBUG PLAN FOR LOOP trusted_spmm_csr.c::89(truested_spmm_csr)::bb158----------------
+bb158---------------------------
+trusted_spmm_csr.c::89(truested_spmm_csr)::bb158::i159(phi)NOTHING   
+trusted_spmm_csr.c::89(truested_spmm_csr)::bb158::i160(call)NOTHING   
+trusted_spmm_csr.c::89(truested_spmm_csr)::bb158::i161(add)NOTHING   
+trusted_spmm_csr.c::89(truested_spmm_csr)::bb158::i162(icmp)NOTHING   
+trusted_spmm_csr.c::89(truested_spmm_csr)::bb158::4(br)NOTHING   
+

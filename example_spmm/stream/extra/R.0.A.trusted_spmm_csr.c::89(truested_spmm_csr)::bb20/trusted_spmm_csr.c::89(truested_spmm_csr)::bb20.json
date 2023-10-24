@@ -1,0 +1,346 @@
+{
+ "region": "trusted_spmm_csr.c::89(truested_spmm_csr)::bb20",
+ "relativePath": "R.0.A.trusted_spmm_csr.c::89(truested_spmm_csr)::bb20/trusted_spmm_csr.c::89(truested_spmm_csr)::bb20.info",
+ "totalAliveStreams": 21,
+ "totalAliveCoalescedStreams": 10,
+ "streams": [
+  {
+   "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb20 bb20::i21(phi))",
+   "id": "4",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "4",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 3,
+   "addrFuncInfo": {
+    "name": "",
+    "args": [],
+    "type": "UNKNOWN_TYPE",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "1",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i29(load))",
+   "id": "15",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "15",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 4,
+   "addrFuncInfo": {
+    "name": "truested_spmm_csr_bb20_i29_load_8_addr",
+    "args": [
+     {
+      "isStream": true,
+      "streamId": "4",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb20 bb20::i21(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb20 bb20::i21(phi))",
+     "id": "4"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 14,
+    "configLoopPossiblePath": 14,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "8",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i29(load))",
+     "id": "15"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i29(load))",
+      "id": "15"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i31(load))",
+   "id": "16",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "16",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 5,
+   "addrFuncInfo": {
+    "name": "truested_spmm_csr_bb20_i31_load_10_addr",
+    "args": [
+     {
+      "isStream": true,
+      "streamId": "4",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb20 bb20::i21(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 0 bb20 bb20::i21(phi))",
+     "id": "4"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 14,
+    "configLoopPossiblePath": 14,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "8",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i31(load))",
+     "id": "16"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_spmm_csr.c::89(truested_spmm_csr) 119 bb20 bb20::i31(load))",
+      "id": "16"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  }
+ ],
+ "coalescedStreamIds": [
+  "4",
+  "15",
+  "16"
+ ],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}
