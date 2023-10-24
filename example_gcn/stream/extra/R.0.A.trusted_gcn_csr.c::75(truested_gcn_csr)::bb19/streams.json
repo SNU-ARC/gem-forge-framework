@@ -1,0 +1,6182 @@
+{
+ "region": "",
+ "relativePath": "",
+ "totalAliveStreams": 0,
+ "totalAliveCoalescedStreams": 0,
+ "streams": [
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::17(store))",
+   "id": "74",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "74",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+     "id": "62"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::17(store))",
+   "id": "75",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "75",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+     "id": "63"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::17(store))",
+   "id": "76",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "76",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+     "id": "64"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i118(load))",
+   "id": "71",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "71",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+     "id": "62"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i118(load))",
+   "id": "72",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "72",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+     "id": "63"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i118(load))",
+   "id": "73",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "73",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+     "id": "64"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::8(store))",
+   "id": "65",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "65",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+     "id": "62"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::8(store))",
+   "id": "66",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "66",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+     "id": "63"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::8(store))",
+   "id": "67",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "67",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+     "id": "64"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i107(load))",
+   "id": "59",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "59",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i107(load))",
+     "id": "59"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i107(load))",
+      "id": "59"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i115(load))",
+      "id": "68"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i107(load))",
+   "id": "60",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "60",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i107(load))",
+     "id": "60"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i107(load))",
+      "id": "60"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i115(load))",
+      "id": "69"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i107(load))",
+   "id": "61",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "61",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i107(load))",
+     "id": "61"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i107(load))",
+      "id": "61"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i115(load))",
+      "id": "70"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i115(load))",
+   "id": "68",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "68",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i107(load))",
+     "id": "59"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i115(load))",
+   "id": "69",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "69",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i107(load))",
+     "id": "60"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i115(load))",
+   "id": "70",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "70",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i107(load))",
+     "id": "61"
+    },
+    "aliasOffset": 4,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb43::i49(load))",
+   "id": "55",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "55",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb43::i49(load))",
+   "id": "56",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "56",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::38(store))",
+   "id": "50",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "50",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::38(store))",
+   "id": "51",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "42",
+    "offset": 192
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 16,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61__store_38_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::38(store))",
+   "id": "52",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "52",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+   "id": "62",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "62",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+     "id": "10"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+     "id": "62"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i110(load))",
+      "id": "62"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::8(store))",
+      "id": "65"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::i118(load))",
+      "id": "71"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb103 bb103::17(store))",
+      "id": "74"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+   "id": "63",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "63",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+     "id": "11"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+     "id": "63"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i110(load))",
+      "id": "63"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::8(store))",
+      "id": "66"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::i118(load))",
+      "id": "72"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb103::17(store))",
+      "id": "75"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+   "id": "64",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "64",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+     "id": "12"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+     "id": "64"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i110(load))",
+      "id": "64"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::8(store))",
+      "id": "67"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::i118(load))",
+      "id": "73"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb103::17(store))",
+      "id": "76"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i88(load))",
+   "id": "38",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "38",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i88(load))",
+   "id": "39",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "30",
+    "offset": 192
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 12,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i88_load_26_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i88(load))",
+   "id": "40",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "40",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+   "id": "4",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "4",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 3,
+   "addrFuncInfo": {
+    "name": "",
+    "args": [],
+    "type": "UNKNOWN_TYPE",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "1",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::32(store))",
+   "id": "41",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "41",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::32(store))",
+   "id": "42",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "42",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 13,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61__store_32_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::32(store))",
+   "id": "43",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "43",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi))",
+   "id": "5",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "5",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 6,
+   "addrFuncInfo": {
+    "name": "",
+    "args": [],
+    "type": "UNKNOWN_TYPE",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "1",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i36(phi))",
+   "id": "6",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "6",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load))",
+     "id": "13"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "VARIANT_BACKEDGE_TAKEN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i75(load))",
+   "id": "26",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "26",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+     "id": "17"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i75(load))",
+   "id": "27",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "18",
+    "offset": 192
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 20,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i75_load_13_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "15",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "INDIRECT",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "INDIRECT",
+     "params": []
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+     "id": "18"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i75(load))",
+   "id": "28",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "28",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+     "id": "19"
+    },
+    "aliasOffset": 192,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+   "id": "7",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "7",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+   "id": "8",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "8",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 7,
+   "addrFuncInfo": {
+    "name": "",
+    "args": [],
+    "type": "UNKNOWN_TYPE",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "64",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+   "id": "9",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "9",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "VARIANT_BACKEDGE_TAKEN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i85(load))",
+   "id": "35",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "35",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i85(load))",
+   "id": "36",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "30",
+    "offset": 128
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 11,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i85_load_23_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i85(load))",
+   "id": "37",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "37",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load))",
+   "id": "13",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "13",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 4,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb19_i26_load_6_addr",
+    "args": [
+     {
+      "isStream": true,
+      "streamId": "4",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 14,
+    "configLoopPossiblePath": 14,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "8",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load))",
+     "id": "13"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load))",
+      "id": "13"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb103 bb103::i104(phi))",
+   "id": "10",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "10",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "IN_LOOP_REMAINDER_OR_EPILOGUE",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb103::i104(phi))",
+   "id": "11",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "11",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "VARIANT_BACKEDGE_TAKEN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb103::i104(phi))",
+   "id": "12",
+   "type": "IV",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "12",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "VARIANT_BACKEDGE_TAKEN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+   "id": "29",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "29",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+      "id": "29"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::32(store))",
+      "id": "41"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i82(load))",
+      "id": "32"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::34(store))",
+      "id": "44"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i85(load))",
+      "id": "35"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::36(store))",
+      "id": "47"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i88(load))",
+      "id": "38"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::38(store))",
+      "id": "50"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+   "id": "30",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "30",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 9,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i79_load_17_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+      "id": "30"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::32(store))",
+      "id": "42"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i82(load))",
+      "id": "33"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::34(store))",
+      "id": "45"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i85(load))",
+      "id": "36"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::36(store))",
+      "id": "48"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i88(load))",
+      "id": "39"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::38(store))",
+      "id": "51"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+   "id": "31",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "31",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+      "id": "31"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::32(store))",
+      "id": "43"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i82(load))",
+      "id": "34"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::34(store))",
+      "id": "46"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i85(load))",
+      "id": "37"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::36(store))",
+      "id": "49"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i88(load))",
+      "id": "40"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::38(store))",
+      "id": "52"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i28(load))",
+   "id": "14",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "14",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 5,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb19_i28_load_8_addr",
+    "args": [
+     {
+      "isStream": true,
+      "streamId": "4",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 14,
+    "configLoopPossiblePath": 14,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "8",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 1,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i28(load))",
+     "id": "14"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i28(load))",
+      "id": "14"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::36(store))",
+   "id": "47",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "47",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::36(store))",
+   "id": "48",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "42",
+    "offset": 128
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 15,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61__store_36_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::36(store))",
+   "id": "49",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "49",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+   "id": "15",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "15",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 8,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb35_i38_load_2_addr",
+    "args": [
+     {
+      "isStream": true,
+      "streamId": "5",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi))",
+     "id": "5"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi))",
+     "id": "5"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 13,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "8",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+      "id": "15"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+   "id": "16",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "16",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i36(phi))",
+     "id": "6"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+      "id": "16"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 8,
+    "memElementSize": 8,
+    "coreElementType": "INTEGER",
+    "memElementType": "INTEGER"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+   "id": "17",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "17",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+     "id": "17"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+      "id": "17"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i69(load))",
+      "id": "20"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i72(load))",
+      "id": "23"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i75(load))",
+      "id": "26"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+   "id": "18",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "18",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 17,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i66_load_4_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "15",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "INDIRECT",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "INDIRECT",
+     "params": []
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+     "id": "18"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+      "id": "18"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i69(load))",
+      "id": "21"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i72(load))",
+      "id": "24"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i75(load))",
+      "id": "27"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+   "id": "19",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "19",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+     "id": "19"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+      "id": "19"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i69(load))",
+      "id": "22"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i72(load))",
+      "id": "25"
+     },
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i75(load))",
+      "id": "28"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb43::i46(load))",
+   "id": "53",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "53",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb43::i46(load))",
+     "id": "53"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb43::i46(load))",
+      "id": "53"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb43::i46(load))",
+   "id": "54",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "54",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 2,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb43::i46(load))",
+     "id": "54"
+    },
+    "aliasOffset": 0,
+    "aliasedStreams": [
+     {
+      "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb43::i46(load))",
+      "id": "54"
+     }
+    ],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i69(load))",
+   "id": "20",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "20",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+     "id": "17"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i69(load))",
+   "id": "21",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "18",
+    "offset": 64
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 18,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i69_load_7_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "15",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "INDIRECT",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "INDIRECT",
+     "params": []
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+     "id": "18"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i69(load))",
+   "id": "22",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "22",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+     "id": "19"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb43::7(store))",
+   "id": "57",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "57",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 2,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb43::7(store))",
+   "id": "58",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "58",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": false,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 2,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": false,
+    "aliasOffset": 0,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 4,
+    "memElementSize": 4,
+    "coreElementType": "FLOAT",
+    "memElementType": "FLOAT"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i72(load))",
+   "id": "23",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "23",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i66(load))",
+     "id": "17"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i72(load))",
+   "id": "24",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "18",
+    "offset": 128
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 19,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i72_load_10_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "15",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load))",
+     "id": "15"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "INDIRECT",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "INDIRECT",
+     "params": []
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load))",
+     "id": "18"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i72(load))",
+   "id": "25",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "25",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb35::i38(load))",
+     "id": "16"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i66(load))",
+     "id": "19"
+    },
+    "aliasOffset": 128,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::34(store))",
+   "id": "44",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "44",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::34(store))",
+   "id": "45",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "42",
+    "offset": 64
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 14,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61__store_34_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::34(store))",
+   "id": "46",
+   "type": "ST",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "46",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": true,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i82(load))",
+   "id": "32",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "32",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb61 bb61::i62(phi))",
+     "id": "7"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 1,
+    "floatManual": false,
+    "isCondAccess": false,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 3,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb61 bb61::i79(load))",
+     "id": "29"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i82(load))",
+   "id": "33",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "30",
+    "offset": 64
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": true,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": 10,
+   "addrFuncInfo": {
+    "name": "truested_gcn_csr_bb61_i82_load_20_addr",
+    "args": [
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": true,
+      "streamId": "8",
+      "type": "INTEGER"
+     },
+     {
+      "isStream": false,
+      "streamId": "0",
+      "type": "INTEGER"
+     }
+    ],
+    "type": "INTEGER",
+    "computeOp": "UNKNOWN"
+   },
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))",
+     "id": "8"
+    }
+   ],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": true,
+    "isChosen": false,
+    "stpPattern": "UNCONDITIONAL",
+    "valPattern": "LINEAR",
+    "notStreamReason": "UNKNOWN",
+    "loopPossiblePath": 1,
+    "configLoopPossiblePath": 13,
+    "ivPattern": {
+     "valPattern": "LINEAR",
+     "params": [
+      {
+       "value": "256",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": true
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      },
+      {
+       "value": "0",
+       "isStatic": false
+      }
+     ]
+    },
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": true,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "predFuncInfo": {
+     "name": "",
+     "args": [],
+     "type": "UNKNOWN_TYPE",
+     "computeOp": "UNKNOWN"
+    },
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 2,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load))",
+     "id": "30"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  },
+  {
+   "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i82(load))",
+   "id": "34",
+   "type": "LD",
+   "patternPath": "",
+   "historyPath": "",
+   "coalesceInfo": {
+    "baseStream": "34",
+    "offset": 0
+   },
+   "dynamicInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "isAliased": false,
+    "totalIters": "0",
+    "totalAccesses": "0",
+    "totalConfigures": "0"
+   },
+   "regionStreamId": -1,
+   "baseStreams": [
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))",
+     "id": "4"
+    },
+    {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb19 bb61::i62(phi))",
+     "id": "9"
+    }
+   ],
+   "backBaseStreams": [],
+   "chosenBaseStreams": [],
+   "chosenBackBaseStreams": [],
+   "staticInfo": {
+    "isCandidate": true,
+    "isQualified": false,
+    "isChosen": false,
+    "stpPattern": "UNKNOWN",
+    "valPattern": "RANDOM",
+    "notStreamReason": "BASE_STREAM_NOT_QUALIFIED",
+    "loopPossiblePath": 0,
+    "configLoopPossiblePath": 0,
+    "floatManual": false,
+    "isCondAccess": true,
+    "isTripCountFixed": false,
+    "predicatedStreams": [],
+    "mergedPredicatedStreams": [],
+    "isMergedPredicatedStream": false,
+    "noCoreUser": false,
+    "loopLevel": 3,
+    "configLoopLevel": 1,
+    "isInnerMostLoop": true,
+    "aliasBaseStream": {
+     "name": "(trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb19 bb61::i79(load))",
+     "id": "31"
+    },
+    "aliasOffset": 64,
+    "aliasedStreams": [],
+    "computeInfo": {
+     "enabledStoreFunc": false,
+     "enabledLoadFunc": false,
+     "valueBaseStreams": [],
+     "valueDepStreams": [],
+     "reduceFromZero": false
+    },
+    "loopEliminated": false,
+    "coreNeedFinalValue": false,
+    "coreElementSize": 64,
+    "memElementSize": 64,
+    "coreElementType": "VECTOR_512",
+    "memElementType": "VECTOR_512"
+   }
+  }
+ ],
+ "coalescedStreamIds": [],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}

@@ -1,0 +1,124 @@
+DEBUG PLAN FOR LOOP trusted_gcn_csr.c::75(truested_gcn_csr)::bb19----------------
+bb19---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i20(phi)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i21(mul)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i22(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i23(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i24(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i25(getelementptr)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i26(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i27(getelementptr)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i28(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::i29(icmp)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i28(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb19::10(br)NOTHING   
+bb33---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb33::i34(mul)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb33::1(br)NOTHING   
+bb35---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb35::i36(phi)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i26(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb35::i37(getelementptr)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb35::i38(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb35::i39(mul)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i38(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb35::4(br)NOTHING   
+bb55---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::i56(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::i57(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::i58(icmp)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::i59(icmp)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::i60(and)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb55::5(br)NOTHING   
+bb61---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i62(phi)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i63(add)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i64(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i65(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i66(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i67(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i68(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i69(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i70(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i71(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i72(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i73(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i74(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i75(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i76(add)DELETE    (trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i77(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i78(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i79(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i80(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i81(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i82(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i83(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i84(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i85(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i86(getelementptr)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i87(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i88(load)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i89(fadd)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i66(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i79(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i90(fadd)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i69(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i82(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i91(fadd)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i85(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i72(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i92(fadd)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i75(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::i88(load)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i93(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::32(store)STORE     (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::32(store)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i94(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::34(store)STORE     (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::34(store)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i95(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::36(store)STORE     (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::36(store)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i96(bitcast)DELETE    
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::38(store)STORE     (trusted_gcn_csr.c::75(truested_gcn_csr) 107 bb35 bb61::38(store)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i97(add)STEP      -(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi))-(trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::i98(icmp)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 106 bb35 bb61::i62(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb61::41(br)NOTHING   
+bb99---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb99::0(br)NOTHING   
+bb40---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb40::i41(phi)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb40::i42(xor)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb40::2(br)NOTHING   
+bb43---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i44(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i45(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i46(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i47(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i48(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i49(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i50(fadd)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::7(store)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::i51(or)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb43::9(br)NOTHING   
+bb52---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb52::i53(phi)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb52::i54(icmp)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb52::2(br)NOTHING   
+bb103---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i104(phi)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i105(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i106(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i107(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i108(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i109(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i110(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i111(fadd)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::8(store)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i112(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i113(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i114(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i115(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i116(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i117(getelementptr)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i118(load)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i119(fadd)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::17(store)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i120(add)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::i121(icmp)NOTHING   
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb103::20(br)NOTHING   
+bb100---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb100::i101(add)STEP      -(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi))-(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb100::i102(icmp)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 104 bb19 bb19::i28(load)) (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb35 bb35::i36(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb100::2(br)NOTHING   
+bb30---------------------------
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb30::i31(add)STEP      -(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi))-(trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb30::i32(icmp)NOTHING   (trusted_gcn_csr.c::75(truested_gcn_csr) 0 bb19 bb19::i20(phi)) 
+trusted_gcn_csr.c::75(truested_gcn_csr)::bb30::2(br)NOTHING   
+

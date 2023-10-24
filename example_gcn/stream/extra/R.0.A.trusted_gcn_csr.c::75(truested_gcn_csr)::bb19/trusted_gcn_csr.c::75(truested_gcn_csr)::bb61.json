@@ -1,0 +1,14 @@
+{
+ "region": "trusted_gcn_csr.c::75(truested_gcn_csr)::bb61",
+ "relativePath": "R.0.A.trusted_gcn_csr.c::75(truested_gcn_csr)::bb19/trusted_gcn_csr.c::75(truested_gcn_csr)::bb61.info",
+ "totalAliveStreams": 18,
+ "totalAliveCoalescedStreams": 9,
+ "streams": [],
+ "coalescedStreamIds": [],
+ "nestRegionRelativePaths": [],
+ "nestPredRet": false,
+ "isNest": false,
+ "loopBoundRet": false,
+ "isLoopBound": false,
+ "loopEliminated": false
+}
