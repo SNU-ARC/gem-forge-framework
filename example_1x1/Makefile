@@ -185,7 +185,7 @@ valid.o8-pf.sim: valid.exe
 .PHONY: psp.o8.sim
 psp.o8.sim: valid.exe
 	${GEM5} \
-		--outdir=${VALID_OUT}/o8-pf \
+		--outdir=${PSP_OUT}/o8 \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
