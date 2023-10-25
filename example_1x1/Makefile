@@ -59,6 +59,19 @@ valid.bc: traced.bc raw.bc
 		-output-extra-folder-path=${VALID_EXTRA}
 	cp ${VALID_EXTRA}/ex.bc $@
 
+PSP_OUT=psp
+PSP_EXTRA=psp/extra
+psp.bc: traced.bc raw.bc
+	mkdir -p ${PSP_OUT}
+	mkdir -p ${PSP_EXTRA}
+	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -stream-execution-static-pass \
+		raw.bc -o $@ \
+		-gem-forge-roi-function=${TRACE_FUNC} \
+		-gem-forge-inst-uid-file=${INST_UID} \
+		-output-datagraph=${PSP_OUT}/fake.0.tdg \
+		-output-extra-folder-path=${PSP_EXTRA}
+	cp ${STREAM_EXTRA}/ex.bc $@
+
 STREAM_OUT=stream
 STREAM_EXTRA=stream/extra
 stream.bc: traced.bc raw.bc
@@ -93,7 +106,7 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synthetic_vector_96dimension'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_1M_96dim'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -114,8 +127,8 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=16 \
-	--walker-se-port=2 \
+	--walker-se-lat=46 \
+	--walker-se-port=4 \
 	--num-cpus=1 \
 	--num-dirs=4 \
 	--num-l2caches=1 \
@@ -165,6 +178,20 @@ valid.o8-pf.sim: valid.exe
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
+		--gem-forge-prefetcher=bingo \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=16 \
+
+.PHONY: psp.o8.sim
+psp.o8.sim: valid.exe
+	${GEM5} \
+		--outdir=${VALID_OUT}/o8-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${O8_SIM} \
+		--gem-forge-psp-frontend-enable \
 		--gem-forge-prefetcher=bingo \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
