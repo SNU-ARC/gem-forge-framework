@@ -188,6 +188,8 @@ psp.o8.sim: valid.exe
 		--outdir=${PSP_OUT}/o8 \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
+		--debug-flag=ISAPSPFrontend \
+		--debug-flag=PSPFrontend \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
