@@ -40,4 +40,4 @@ echo "#"
 echo "######################## Build GemForge GEM5 ####################################"
 echo "#"
 cd gem5
-scons build/X86/gem5.opt --default=X86 PROTOCOL=MESI_Three_Level_Stream 
+/usr/bin/scons -j${CORES} build/X86/gem5.opt --default=X86 PROTOCOL=MESI_Three_Level_Stream 

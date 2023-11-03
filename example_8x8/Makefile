@@ -78,7 +78,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=1
+THREADS=64
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -101,10 +101,10 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=64 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=64 \
+	--mesh-rows=8 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -215,10 +215,10 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=64 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=64 \
+	--mesh-rows=8 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -309,11 +309,11 @@ stream.io-float.sim: stream.exe
 		--llc-select-low-bit=10 \
 
 .PHONY: sim-o3
-sim-all: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-all: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
 	echo "Simulation IO core all done!"
 
 .PHONY: sim-all
