@@ -1,11 +1,8 @@
 
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
 SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
-FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+FLAGS=-O3 -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
 #FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -40,6 +37,7 @@ INST_UID=inst.uid
 #TRACE_FUNC=foo
 TRACE_FUNC=vector_addition_host
 #TRACE_FUNC=.omp_outlined.
+#TRACE_FUNC=trusted_spmm_csr
 TRACE_FILE=fake.trace
 
 traced.bc: raw.bc
@@ -100,13 +98,14 @@ clean:
 
 .PHONY: clean-all
 clean-all: clean
-	rm -rf valid stream
+	rm -rf valid stream psp
 
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_1M_96dim'
+#ARGUMENTS=${THREADS}
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -127,7 +126,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=46 \
+	--walker-se-lat=500 \
 	--walker-se-port=4 \
 	--num-cpus=1 \
 	--num-dirs=4 \
@@ -139,8 +138,9 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
-	--mem-channels=2 \
-	--mem-size=16GB \
+	--mem-type="DDR4_2400_16x4" \
+	--mem-channels=6 \
+	--mem-size=192GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
 	--l1i_size=32kB \
