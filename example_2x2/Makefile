@@ -1,7 +1,7 @@
 
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
 SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
 FLAGS=-O3 -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
 #FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
 
@@ -64,7 +64,7 @@ psp.bc: traced.bc raw.bc
 		-gem-forge-inst-uid-file=${INST_UID} \
 		-output-datagraph=${PSP_OUT}/fake.0.tdg \
 		-output-extra-folder-path=${PSP_EXTRA}
-	cp ${STREAM_EXTRA}/ex.bc $@
+	cp ${PSP_EXTRA}/ex.bc $@
 
 STREAM_OUT=stream
 STREAM_EXTRA=stream/extra
@@ -179,7 +179,7 @@ valid.o8-pf.sim: valid.exe
 		--gem-forge-l2-prefetch-dist=16 \
 
 .PHONY: psp.o8.sim
-psp.o8.sim: valid.exe
+psp.o8.sim: psp.exe
 	${GEM5} \
 		--outdir=${PSP_OUT}/o8 \
 		--stats-file=text://stats.txt?dumpAll=False \
@@ -190,7 +190,7 @@ psp.o8.sim: valid.exe
 		--gem-forge-psp-frontend-enable
 
 .PHONY: psp.o8-pf.sim
-psp.o8-pf.sim: valid.exe
+psp.o8-pf.sim: psp.exe
 	${GEM5} \
 		--outdir=${PSP_OUT}/o8-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
