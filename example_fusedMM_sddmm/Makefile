@@ -2,9 +2,7 @@
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.cpp
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/fusedMM_sddmm_csr/fusedMM_sddmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
@@ -40,7 +38,7 @@ raw.S: raw.ll
 
 INST_UID=inst.uid
 #TRACE_FUNC=foo
-TRACE_FUNC=trusted_spmm_csr
+TRACE_FUNC=sgfusedMM_K128_sigmoid_b0_csr
 #TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
