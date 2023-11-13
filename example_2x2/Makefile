@@ -101,7 +101,7 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=4
 #ARGUMENTS=${THREADS}
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_128dim.bin'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -122,7 +122,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=640 \
+	--walker-se-lat=880 \
 	--walker-se-port=4 \
 	--num-cpus=4 \
 	--num-dirs=4 \
@@ -187,7 +187,8 @@ psp.o8.sim: psp.exe
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
-		--gem-forge-psp-frontend-enable
+		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 
 .PHONY: psp.o8-pf.sim
 psp.o8-pf.sim: psp.exe
@@ -199,7 +200,9 @@ psp.o8-pf.sim: psp.exe
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
-		--gem-forge-prefetcher=stride \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=4 \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
 
