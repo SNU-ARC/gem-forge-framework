@@ -35,8 +35,8 @@ raw.S: raw.ll
 
 INST_UID=inst.uid
 #TRACE_FUNC=foo
-TRACE_FUNC=vector_addition_host
-#TRACE_FUNC=.omp_outlined.
+#TRACE_FUNC=vector_addition_host
+TRACE_FUNC=.omp_outlined.
 #TRACE_FUNC=trusted_spmm_csr
 TRACE_FILE=fake.trace
 
@@ -68,7 +68,7 @@ psp.bc: traced.bc raw.bc
 		-gem-forge-inst-uid-file=${INST_UID} \
 		-output-datagraph=${PSP_OUT}/fake.0.tdg \
 		-output-extra-folder-path=${PSP_EXTRA}
-	cp ${STREAM_EXTRA}/ex.bc $@
+	cp ${PSP_EXTRA}/ex.bc $@
 
 STREAM_OUT=stream
 STREAM_EXTRA=stream/extra
@@ -105,7 +105,7 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
 #ARGUMENTS=${THREADS}
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_128dim.bin'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \
@@ -126,7 +126,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=500 \
+	--walker-se-lat=880 \
 	--walker-se-port=4 \
 	--num-cpus=1 \
 	--num-dirs=4 \
@@ -139,8 +139,8 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--router-latency=2 \
 	--link-latency=1 \
 	--mem-type="DDR4_2400_16x4" \
-	--mem-channels=6 \
-	--mem-size=192GB \
+	--mem-channels=2 \
+	--mem-size=64GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
 	--l1i_size=32kB \
@@ -178,23 +178,37 @@ valid.o8-pf.sim: valid.exe
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
-		--gem-forge-prefetcher=bingo \
+		--gem-forge-prefetcher=stride \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
 
 .PHONY: psp.o8.sim
-psp.o8.sim: valid.exe
+psp.o8.sim: psp.exe
 	${GEM5} \
 		--outdir=${PSP_OUT}/o8 \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
-		--debug-flag=ISAPSPFrontend \
-		--debug-flag=PSPFrontend \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
-		--gem-forge-prefetcher=bingo \
+
+.PHONY: psp.o8-pf.sim
+psp.o8-pf.sim: psp.exe
+	${GEM5} \
+		--outdir=${PSP_OUT}/o8-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		--debug-flags=ISAPSPFrontend \
+		--debug-flags=PSPFrontend \
+		--debug-flags=PSPBackend \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${O8_SIM} \
+		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-pa-queue-capacity=3 \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=4 \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
 
@@ -368,7 +382,7 @@ stream.io-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 
 .PHONY: sim-o3
-sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim 
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.sim psp.o8-pf.sim
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
