@@ -1,14 +1,7 @@
 
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr_new/trusted_spmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.cpp
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
-FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
-#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
+#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
+FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 #CC=${LLVM_RELEASE}/clang++
@@ -24,11 +17,12 @@ LLVM_DEBUG=${GEM_FORGE_TOP}/llvm/install-debug/bin
 OPT=${LLVM_DEBUG}/opt
 
 GEM5_INC=${GEM_FORGE_TOP}/gem5/include
+NSG_INC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/nsg/include
 GEM5_OPS=${GEM_FORGE_TOP}/gem5/util/m5/m5op_x86.S
 
 # Gem Forge requires the bitcode named.
 raw.bc: ${SRC}
-	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@
+	${CC} $^ ${FLAGS} -c -emit-llvm -I${GEM5_INC} -I${NSG_INC} -o $@
 	${OPT} -instnamer $@ -o $@
 
 raw.ll: raw.bc
@@ -40,7 +34,7 @@ raw.S: raw.ll
 
 INST_UID=inst.uid
 #TRACE_FUNC=foo
-TRACE_FUNC=trusted_spmm_csr
+TRACE_FUNC=SearchWithOptGraph
 #TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
@@ -81,7 +75,7 @@ stream.bc: traced.bc raw.bc
 	${CC} -c -O3 -ffp-contract=off $^ -o $@
 
 %.exe: %.o
-	${CXX} -static -o $@ $^ -lomp -lpthread -Wl,--no-as-needed -ldl -I${GEM5_INC} ${GEM5_OPS} 
+	${CXX} -static -o $@ $^ -lomp -lpthread -Wl,--no-as-needed -ldl -I${GEM5_INC} -I${NSG_INC} ${GEM5_OPS} 
 
 .PHONY: clean
 clean:
@@ -95,10 +89,8 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
-#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
-#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/OGB-Datasets/ogbn-arxiv_0'
-#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/IGB-Datasets/dataset/igb_tiny_0'
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/cs4'
+#                                     base                               query                                  nsg                L  K 
+ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 100 10'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \

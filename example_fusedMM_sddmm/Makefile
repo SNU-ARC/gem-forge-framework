@@ -1,12 +1,5 @@
-
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
 SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/fusedMM_sddmm_csr/fusedMM_sddmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
-#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 #CC=${LLVM_RELEASE}/clang++
@@ -93,7 +86,7 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synthetic_vector_96dimension'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 
 O8_SIM=--llvm-store-queue-size=32 \
 	--llvm-mcpat=0 \

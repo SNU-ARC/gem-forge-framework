@@ -1,21 +1,10 @@
-
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/cond_index_sum/cond_index_sum.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_sssp_bellman_queue/omp_sssp_bellman_queue.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr_new/trusted_spmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.cpp
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs/omp_bfs.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/graph/omp_bfs_queue/omp_bfs_queue.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/fusedMM_spmm_csr/fusedMM_spmm_csr.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
-#FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
-#CC=${LLVM_RELEASE}/clang++
 CC=${LLVM_RELEASE}/clang
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
-LLVM_ASM=${LLVM_RELEASE}/llc
 
 GEM_FORGE_TRANSFORM_SO=${GEM_FORGE_TOP}/transform/build/src/libLLVMTDGPass.so
 
@@ -34,12 +23,7 @@ raw.bc: ${SRC}
 raw.ll: raw.bc
 	${LLVM_DIS} $^ -o $@
 
-# Generate assembly code from IR
-raw.S: raw.ll
-	${LLVM_ASM} $^ -o $@
-
 INST_UID=inst.uid
-#TRACE_FUNC=foo
 TRACE_FUNC=trusted_spmm_csr
 #TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
@@ -85,7 +69,7 @@ stream.bc: traced.bc raw.bc
 
 .PHONY: clean
 clean:
-	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace *.S
+	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace
 
 .PHONY: clean-all
 clean-all: clean
@@ -94,7 +78,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=1
+THREADS=4
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/OGB-Datasets/ogbn-arxiv_0'
 #ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/IGB-Datasets/dataset/igb_tiny_0'
@@ -121,10 +105,10 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=4 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=4 \
+	--mesh-rows=2 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -232,17 +216,17 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=96 \
-	--l1tlb-assoc=6 \
+	--l1tlb-size=64 \
+	--l1tlb-assoc=8 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
 	--walker-se-port=2 \
-	--num-cpus=1 \
+	--num-cpus=4 \
 	--num-dirs=4 \
-	--num-l2caches=1 \
-	--mesh-rows=1 \
+	--num-l2caches=4 \
+	--mesh-rows=2 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -307,14 +291,6 @@ stream.io.sim: stream.exe
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-stream-engine-throttling=global 
-#		--debug-flags=CoalescedStream \
-#		--debug-flags=ExecFunc \
-#		--debug-flags=StreamBase \
-#		--debug-flags=StreamElement \
-#		--debug-flags=AddrGenCallback \
-#		--debug-flags=ISAStreamEngine \
-#		--debug-flags=StreamEngineBase \
-#		--gem-forge-stream-engine-default-run-ahead-length=8 \
 
 .PHONY: stream.io-float.sim
 stream.io-float.sim: stream.exe
