@@ -2,7 +2,7 @@ build/
 example/
 example_1x1/
 example_2x2/
-example_8x8/
+example_4x2/
 example_gcn/
 example_spmm/
 result/
