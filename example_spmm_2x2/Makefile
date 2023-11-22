@@ -1,7 +1,7 @@
 
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr_new/trusted_spmm_csr.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
 FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -83,8 +83,8 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=4
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
-#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/OGB-Datasets/ogbn-arxiv_0'
-#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/IGB-Datasets/dataset/igb_tiny_0'
+#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/OGB-Datasets/ogbn-papers100M_0'
+#ARGUMENTS='${THREADS} /home2/youngook/research/01_NDP/01_ISCA_23/IGB-Datasets/dataset/igb_medium_0'
 ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/cs4'
 
 O8_SIM=--llvm-store-queue-size=32 \
