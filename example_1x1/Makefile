@@ -1,8 +1,10 @@
 
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/fusedMM_spmm_csr/fusedMM_spmm_csr.c
 FLAGS=-O3 -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
 #FLAGS=-O3 -DGEM_FORGE -mavx512f -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
@@ -33,6 +35,18 @@ raw.ll: raw.bc
 raw.S: raw.ll
 	${LLVM_ASM} $^ -o $@
 
+# Gem Forge requires the bitcode named.
+psp_raw.bc: ${SRC}
+	${CC} $^ ${PSP_FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@
+	${OPT} -instnamer $@ -o $@
+
+psp_raw.ll: raw.bc
+	${LLVM_DIS} $^ -o $@
+
+# Generate assembly code from IR
+psp_raw.S: raw.ll
+	${LLVM_ASM} $^ -o $@
+
 INST_UID=inst.uid
 #TRACE_FUNC=foo
 #TRACE_FUNC=vector_addition_host
@@ -41,6 +55,10 @@ TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
 traced.bc: raw.bc
+	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${INST_UID} -trace-function ${TRACE_FUNC}
+	touch ${TRACE_FILE}
+
+psp_traced.bc: psp_raw.bc
 	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${INST_UID} -trace-function ${TRACE_FUNC}
 	touch ${TRACE_FILE}
 
@@ -59,11 +77,11 @@ valid.bc: traced.bc raw.bc
 
 PSP_OUT=psp
 PSP_EXTRA=psp/extra
-psp.bc: traced.bc raw.bc
+psp.bc: psp_traced.bc psp_raw.bc
 	mkdir -p ${PSP_OUT}
 	mkdir -p ${PSP_EXTRA}
 	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -stream-execution-static-pass \
-		raw.bc -o $@ \
+		psp_raw.bc -o $@ \
 		-gem-forge-roi-function=${TRACE_FUNC} \
 		-gem-forge-inst-uid-file=${INST_UID} \
 		-output-datagraph=${PSP_OUT}/fake.0.tdg \
@@ -100,14 +118,18 @@ clean:
 clean-all: clean
 	rm -rf valid stream psp
 
+#GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.debug
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=1
 #ARGUMENTS=${THREADS}
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_128dim.bin'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_0'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium_split/igb_medium_0'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_128dim.bin'
 
-O8_SIM=--llvm-store-queue-size=32 \
+O8_SIM=--llvm-store-queue-size=50 \
+	--llvm-load-queue-size=80 \
 	--llvm-mcpat=0 \
 	--caches \
 	--l2cache \
@@ -117,7 +139,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=DerivO3CPU \
-	--llvm-issue-width=8 \
+	--llvm-issue-width=6 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
@@ -126,7 +148,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=880 \
+	--walker-se-lat=16 \
 	--walker-se-port=4 \
 	--num-cpus=1 \
 	--num-dirs=4 \
@@ -146,16 +168,16 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1i_size=32kB \
 	--l1i_assoc=8 \
 	--l1d_size=32kB \
-	--l1d_lat=8 \
+	--l1d_lat=3 \
 	--l1d_mshrs=8 \
 	--l1d_assoc=8 \
 	--l1_5d_size=256kB \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
-	--l2_lat=16 \
+	--l2_lat=17 \
 	--l2_size=2MB \
 	--l2_assoc=16 \
-	--l3_lat=20 \
+	--l3_lat=74 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
@@ -180,7 +202,7 @@ valid.o8-pf.sim: valid.exe
 		${O8_SIM} \
 		--gem-forge-prefetcher=stride \
 		--gem-forge-l2-prefetcher=stride \
-		--gem-forge-l2-prefetch-dist=16 \
+		--gem-forge-l2-prefetch-dist=8 \
 
 .PHONY: psp.o8.sim
 psp.o8.sim: psp.exe
@@ -192,6 +214,17 @@ psp.o8.sim: psp.exe
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-tlb-prefetch-only \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=8 \
+
+#		--debug-flags=ISAPSPFrontend \
+#		--debug-flags=PSPFrontend \
+#		--debug-flags=PSPBackend \
 
 .PHONY: psp.o8-pf.sim
 psp.o8-pf.sim: psp.exe
@@ -199,16 +232,31 @@ psp.o8-pf.sim: psp.exe
 		--outdir=${PSP_OUT}/o8-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
-		--debug-flags=ISAPSPFrontend \
-		--debug-flags=PSPFrontend \
-		--debug-flags=PSPBackend \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
-		--gem-forge-psp-frontend-pa-queue-capacity=3 \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-prefetch-distance=4 \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=8 \
+
+.PHONY: uve.proxy.sim
+uve.proxy.sim: psp.exe
+	${GEM5} \
+		--outdir=${PSP_OUT}/uve-proxy \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${O8_SIM} \
+		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-pa-queue-capacity=1 \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-psp-backend-num-stream-entry=1 \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
 
@@ -261,8 +309,8 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--caches \
 	--l2cache \
 	--gem-forge-num-active-cpus=1 \
-	--gem-forge-cache-load-ports=6 \
-	--gem-forge-cache-store-ports=4 \
+	--gem-forge-cache-load-ports=2 \
+	--gem-forge-cache-store-ports=2 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=MinorCPU \
@@ -382,7 +430,7 @@ stream.io-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 
 .PHONY: sim-o3
-sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.sim psp.o8-pf.sim
+sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.sim psp.o8-pf.sim # uve.proxy.sim
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
