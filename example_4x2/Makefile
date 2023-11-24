@@ -3,6 +3,7 @@
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
 SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
 FLAGS=-O3 -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx2 -fopenmp -std=c11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 CC=${LLVM_RELEASE}/clang
@@ -31,12 +32,29 @@ raw.ll: raw.bc
 raw.S: raw.ll
 	${LLVM_ASM} $^ -o $@
 
+# Gem Forge requires the bitcode named.
+psp_raw.bc: ${SRC}
+	${CC} $^ ${PSP_FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@
+	${OPT} -instnamer $@ -o $@
+
+psp_raw.ll: psp_raw.bc
+	${LLVM_DIS} $^ -o $@
+
+# Generate assembly code from IR
+psp_raw.S: psp_raw.ll
+	${LLVM_ASM} $^ -o $@
+
 INST_UID=inst.uid
+PSP_INST_UID=psp_inst.uid
 TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
 traced.bc: raw.bc
 	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${INST_UID} -trace-function ${TRACE_FUNC}
+	touch ${TRACE_FILE}
+
+psp_traced.bc: psp_raw.bc
+	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${PSP_INST_UID} -trace-function ${TRACE_FUNC}
 	touch ${TRACE_FILE}
 
 VALID_OUT=valid
@@ -51,19 +69,6 @@ valid.bc: traced.bc raw.bc
 		-output-datagraph=${VALID_OUT}/fake.0.tdg \
 		-output-extra-folder-path=${VALID_EXTRA}
 	cp ${VALID_EXTRA}/ex.bc $@
-
-PSP_OUT=psp
-PSP_EXTRA=psp/extra
-psp.bc: traced.bc raw.bc
-	mkdir -p ${PSP_OUT}
-	mkdir -p ${PSP_EXTRA}
-	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -stream-execution-static-pass \
-		raw.bc -o $@ \
-		-gem-forge-roi-function=${TRACE_FUNC} \
-		-gem-forge-inst-uid-file=${INST_UID} \
-		-output-datagraph=${PSP_OUT}/fake.0.tdg \
-		-output-extra-folder-path=${PSP_EXTRA}
-	cp ${PSP_EXTRA}/ex.bc $@
 
 STREAM_OUT=stream
 STREAM_EXTRA=stream/extra
@@ -80,6 +85,19 @@ stream.bc: traced.bc raw.bc
 		-output-datagraph=${STREAM_OUT}/fake.0.tdg \
 		-output-extra-folder-path=${STREAM_EXTRA}
 	cp ${STREAM_EXTRA}/ex.bc $@
+
+PSP_OUT=psp
+PSP_EXTRA=psp/extra
+psp.bc: psp_traced.bc psp_raw.bc
+	mkdir -p ${PSP_OUT}
+	mkdir -p ${PSP_EXTRA}
+	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -valid-execution-pass \
+		psp_raw.bc -o $@ \
+		-gem-forge-roi-function=${TRACE_FUNC} \
+		-gem-forge-inst-uid-file=${PSP_INST_UID} \
+		-output-datagraph=${PSP_OUT}/fake.0.tdg \
+		-output-extra-folder-path=${PSP_EXTRA}
+	cp ${PSP_EXTRA}/ex.bc $@
 
 %.o: %.bc
 	${CC} -c -O3 -ffp-contract=off $^ -o $@
@@ -99,9 +117,12 @@ GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=8
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium_split/igb_medium_0'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_1'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
 
-O8_SIM=--llvm-store-queue-size=32 \
+O8_SIM=--llvm-store-queue-size=50 \
+	--llvm-load-queue-size=80 \
 	--llvm-mcpat=0 \
 	--caches \
 	--l2cache \
@@ -120,7 +141,7 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=880 \
+	--walker-se-lat=180 \
 	--walker-se-port=4 \
 	--num-cpus=8 \
 	--num-dirs=4 \
@@ -146,14 +167,12 @@ O8_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_size=256kB \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
-	--l2_lat=16 \
+	--l2_lat=17 \
 	--l2_size=1MB \
 	--l2_assoc=16 \
-	--l3_lat=20 \
+	--l3_lat=74 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
-#	--mem-type="DRAMsim3" \
-#	--dramsim3-ini="${GEM_FORGE_TOP}/gem5/ext/dramsim3/DRAMsim3/configs/DDR4_8Gb_x8_3200.ini" \
 
 .PHONY: valid.o8.sim
 valid.o8.sim: valid.exe
@@ -188,12 +207,13 @@ psp.o8.sim: psp.exe
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-prefetch-distance=8 \
 		--gem-forge-l2-prefetcher=stride \
-		--gem-forge-l2-prefetch-dist=16 \
+		--gem-forge-l2-prefetch-dist=8 \
 
 .PHONY: psp.o8-pf.sim
 psp.o8-pf.sim: psp.exe
@@ -205,11 +225,12 @@ psp.o8-pf.sim: psp.exe
 		--cmd=$^ \
 		${O8_SIM} \
 		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-prefetch-distance=8 \
 		--gem-forge-l2-prefetcher=stride \
-		--gem-forge-l2-prefetch-dist=16 \
+		--gem-forge-l2-prefetch-dist=8 \
 
 .PHONY: uve.proxy.sim
 uve.proxy.sim: psp.exe
