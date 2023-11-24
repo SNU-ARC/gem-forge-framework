@@ -212,6 +212,8 @@ psp.o8.sim: psp.exe
 		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=8 \
 
 .PHONY: psp.o8-pf.sim
 psp.o8-pf.sim: psp.exe
