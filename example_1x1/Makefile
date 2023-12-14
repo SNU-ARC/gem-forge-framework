@@ -1,14 +1,14 @@
 
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_dense_mv_blk/omp_dense_mv_blk.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
-#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
-PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
 CC=${LLVM_RELEASE}/clang
@@ -124,10 +124,10 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 THREADS=1
 #ARGUMENTS=${THREADS}
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
-#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_1'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_1'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium_split/igb_medium_0'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_128dim.bin'
-ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
+#ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
 
 O8_SIM=--llvm-store-queue-size=50 \
 	--llvm-load-queue-size=80 \
@@ -305,7 +305,8 @@ stream.o8-float.sim: stream.exe
 #		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 
-IO_SIM=--llvm-store-queue-size=32 \
+IO_SIM=--llvm-store-queue-size=4 \
+	--llvm-load-queue-size=4 \
 	--llvm-mcpat=0 \
 	--caches \
 	--l2cache \
@@ -315,7 +316,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=MinorCPU \
-	--llvm-issue-width=4 \
+	--llvm-issue-width=2 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
@@ -325,7 +326,7 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=16 \
-	--walker-se-port=2 \
+	--walker-se-port=4 \
 	--num-cpus=1 \
 	--num-dirs=4 \
 	--num-l2caches=1 \
@@ -336,8 +337,9 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--garnet-enable-multicast \
 	--router-latency=2 \
 	--link-latency=1 \
+	--mem-type="DDR4_2400_16x4" \
 	--mem-channels=2 \
-	--mem-size=16GB \
+	--mem-size=192GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
 	--l1i_size=32kB \
@@ -349,10 +351,10 @@ IO_SIM=--llvm-store-queue-size=32 \
 	--l1_5d_size=256kB \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=16 \
-	--l2_lat=16 \
-	--l2_size=2MB \
+	--l2_lat=17 \
+	--l2_size=512kB \
 	--l2_assoc=16 \
-	--l3_lat=20 \
+	--l3_lat=74 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
@@ -375,7 +377,48 @@ valid.io-pf.sim: valid.exe
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${IO_SIM} \
-		--gem-forge-prefetcher=bingo \
+		--gem-forge-prefetcher=stride \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=16 \
+
+.PHONY: psp.io.sim
+psp.io.sim: psp.exe
+	${GEM5} \
+		--outdir=${PSP_OUT}/io \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${IO_SIM} \
+		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-tlb-prefetch-only \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-prefetcher=stride \
+		--gem-forge-l2-prefetcher=stride \
+		--gem-forge-l2-prefetch-dist=16 \
+
+#		--debug-flags=ISAPSPFrontend \
+#		--debug-flags=PSPFrontend \
+#		--debug-flags=PSPBackend \
+
+.PHONY: psp.io-pf.sim
+psp.io-pf.sim: psp.exe
+	${GEM5} \
+		--outdir=${PSP_OUT}/io-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${IO_SIM} \
+		--gem-forge-psp-frontend-enable \
+		--gem-forge-psp-frontend-index-queue-capacity=64 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-prefetcher=stride \
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=16 \
 
@@ -435,7 +478,7 @@ sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.si
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim psp.io.sim psp.io-pf.sim
 	echo "Simulation IO core all done!"
 
 .PHONY: sim-ssp
