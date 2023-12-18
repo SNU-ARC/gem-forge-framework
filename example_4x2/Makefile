@@ -300,13 +300,14 @@ stream.o8-float.sim: stream.exe
 		--gem-forge-stream-engine-llc-stream-max-infly-request=16 \
 		--llc-select-low-bit=10 \
 
-IO_SIM=--llvm-store-queue-size=32 \
+IO_SIM=--llvm-store-queue-size=4 \
+	--llvm-load-queue-size=4 \
 	--llvm-mcpat=0 \
 	--caches \
 	--l2cache \
 	--gem-forge-num-active-cpus=1 \
-	--gem-forge-cache-load-ports=6 \
-	--gem-forge-cache-store-ports=4 \
+	--gem-forge-cache-load-ports=2 \
+	--gem-forge-cache-store-ports=2 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=MinorCPU \
