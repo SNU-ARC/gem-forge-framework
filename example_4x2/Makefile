@@ -371,9 +371,10 @@ psp.io.sim: psp.exe
 		${IO_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=2 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-num-stream-entry=4 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
 		--gem-forge-prefetcher=stride \
 		
@@ -395,8 +396,9 @@ psp.io-pf.sim: psp.exe
 		${IO_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=2 \
+		--gem-forge-psp-frontend-pa-queue-capacity=4 \
 		--gem-forge-psp-backend-enable \
+		--gem-forge-psp-backend-num-stream-entry=4 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
 		--gem-forge-prefetcher=stride \
 
