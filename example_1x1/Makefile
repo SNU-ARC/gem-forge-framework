@@ -245,23 +245,6 @@ psp.o8-pf.sim: psp.exe
 		--gem-forge-l2-prefetcher=stride \
 		--gem-forge-l2-prefetch-dist=8 \
 
-.PHONY: uve.proxy.sim
-uve.proxy.sim: psp.exe
-	${GEM5} \
-		--outdir=${PSP_OUT}/uve-proxy \
-		--stats-file=text://stats.txt?dumpAll=False \
-		--listener-mode=off \
-		${GEM5_CONFIG} \
-		--cmd=$^ \
-		${O8_SIM} \
-		--gem-forge-psp-frontend-enable \
-		--gem-forge-psp-frontend-pa-queue-capacity=1 \
-		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-psp-backend-num-stream-entry=1 \
-		--gem-forge-l2-prefetcher=stride \
-		--gem-forge-l2-prefetch-dist=16 \
-
 .PHONY: stream.o8.sim
 stream.o8.sim: stream.exe
 	cp $^ ${STREAM_EXTRA}/
@@ -426,8 +409,8 @@ psp.io-pf.sim: psp.exe
 #		--gem-forge-l2-prefetcher=stride \
 #		--gem-forge-l2-prefetch-dist=16 \
 
-.PHONY: uve.proxy.sim
-uve.proxy.sim: psp.exe
+.PHONY: uve_proxy.io-pf.sim
+uve_proxy.io-pf.sim: psp.exe
 	${GEM5} \
 		--outdir=uve_proxy/io-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
@@ -501,7 +484,7 @@ sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.si
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim psp.io.sim psp.io-pf.sim uve.proxy.sim
+sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim psp.io.sim psp.io-pf.sim uve_proxy.io-pf.sim
 	echo "Simulation IO core all done!"
 
 .PHONY: sim-ssp
