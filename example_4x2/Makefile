@@ -6,14 +6,14 @@ SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/tru
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
-FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
-#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
-CC=${LLVM_RELEASE}/clang
-#CC=${LLVM_RELEASE}/clang++
+#CC=${LLVM_RELEASE}/clang
+CC=${LLVM_RELEASE}/clang++
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
 LLVM_ASM=${LLVM_RELEASE}/llc
@@ -123,12 +123,14 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
+#THREADS=1
 THREADS=8
 #ARGUMENTS='${THREADS}'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium_split/igb_medium_0'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_1'
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
 #ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
 
@@ -344,7 +346,7 @@ valid.io.sim: valid.exe
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
-		${IO_SIM}
+		${IO_SIM} > valid.io.log
 
 .PHONY: valid.io-pf.sim
 valid.io-pf.sim: valid.exe
@@ -355,7 +357,7 @@ valid.io-pf.sim: valid.exe
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${IO_SIM} \
-		--gem-forge-prefetcher=stride \
+		--gem-forge-prefetcher=stride > valid.io-pf.log
 		
 #		--gem-forge-l2-prefetcher=stride \
 #		--gem-forge-l2-prefetch-dist=16 \
@@ -376,7 +378,7 @@ psp.io.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=4 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride \
+		--gem-forge-prefetcher=stride > psp.io.log
 		
 #		--gem-forge-l2-prefetcher=stride \
 #		--gem-forge-l2-prefetch-dist=16 \
@@ -391,6 +393,8 @@ psp.io-pf.sim: psp.exe
 		--outdir=${PSP_OUT}/io-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
+		--debug-flags=PSPFrontend \
+		--debug-flags=PSPBackend \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${IO_SIM} \
@@ -400,7 +404,7 @@ psp.io-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=4 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride \
+		--gem-forge-prefetcher=stride > psp.io-pf.log
 
 #		--gem-forge-l2-prefetcher=stride \
 #		--gem-forge-l2-prefetch-dist=16 \
@@ -422,7 +426,7 @@ uve_proxy.io-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride \
+		--gem-forge-prefetcher=stride > uve_proxy.io-pf.log
 
 .PHONY: stream.io.sim
 stream.io.sim: stream.exe
