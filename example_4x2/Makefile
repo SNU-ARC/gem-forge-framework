@@ -133,6 +133,8 @@ THREADS=8
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
 ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
+#ARGUMENTS='${THREADS} ../dataset/graph/gist1M/gist1M_base ../dataset/graph/gist1M/gist1M_query ../dataset/graph/gist1M/gist1M_nsg 108 10'
+#ARGUMENTS='${THREADS} ../dataset/graph/deep1M/deep1M_base ../dataset/graph/deep1M/deep1M_query ../dataset/graph/deep1M/deep1M_nsg 40 10'
 
 O8_SIM=--llvm-store-queue-size=50 \
 	--llvm-load-queue-size=80 \
@@ -300,9 +302,9 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
-	--l1tlb-size=32 \
+	--l1tlb-size=64 \
 	--l1tlb-assoc=4 \
-	--l2tlb-size=1024 \
+	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=880 \
@@ -318,7 +320,7 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--router-latency=2 \
 	--link-latency=1 \
 	--mem-type="DDR4_2400_16x4" \
-	--mem-channels=2 \
+	--mem-channels=4 \
 	--mem-size=128GB \
 	--topology=MeshDirCorners_XY \
 	--routing-YX \
@@ -332,7 +334,7 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--l1_5d_assoc=16 \
 	--l1_5d_mshrs=8 \
 	--l2_lat=17 \
-	--l2_size=512kB \
+	--l2_size=1MB \
 	--l2_assoc=16 \
 	--l3_lat=74 \
 	--fast-forward=-1 \
