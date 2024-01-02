@@ -3,17 +3,17 @@
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_va/omp_va.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/omp_indirect_va/omp_indirect_va.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
-#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
-PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+#FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
+#PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 
 LLVM_RELEASE=${GEM_FORGE_TOP}/llvm/install-release/bin
-#CC=${LLVM_RELEASE}/clang
-CC=${LLVM_RELEASE}/clang++
+CC=${LLVM_RELEASE}/clang
+#CC=${LLVM_RELEASE}/clang++
 CXX=${LLVM_RELEASE}/clang++
 LLVM_DIS=${LLVM_RELEASE}/llvm-dis
 LLVM_ASM=${LLVM_RELEASE}/llc
@@ -127,12 +127,17 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 THREADS=8
 #ARGUMENTS='${THREADS}'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/youtube'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-products'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/reddit'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/yelp'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium_split/igb_medium_0'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/igb_medium'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M-split/ogbn-papers100M_1'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-papers100M'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/synth_10M_256dim.bin'
-ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
+#ARGUMENTS='${THREADS} ../dataset/graph/sift1M/sift1M_base ../dataset/graph/sift1M/sift1M_query ../dataset/graph/sift1M/sift1M_nsg 40 10'
 #ARGUMENTS='${THREADS} ../dataset/graph/gist1M/gist1M_base ../dataset/graph/gist1M/gist1M_query ../dataset/graph/gist1M/gist1M_nsg 108 10'
 #ARGUMENTS='${THREADS} ../dataset/graph/deep1M/deep1M_base ../dataset/graph/deep1M/deep1M_query ../dataset/graph/deep1M/deep1M_nsg 40 10'
 
@@ -330,13 +335,9 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--l1d_lat=2 \
 	--l1d_mshrs=4 \
 	--l1d_assoc=8 \
-	--l1_5d_size=32kB \
-	--l1_5d_assoc=8 \
-	--l1_5d_mshrs=4 \
-	--l2_lat=1 \
 	--l2_size=256kB \
 	--l2_assoc=16 \
-	--l3_lat=19 \
+	--l2_lat=20 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
@@ -427,7 +428,7 @@ uve_proxy.io-pf.sim: psp.exe
 		--gem-forge-psp-data-prefetch-only \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
-		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-psp-backend-prefetch-distance=4 \
 		--gem-forge-prefetcher=stride > uve_proxy.io-pf.log
 
 .PHONY: stream.io.sim
