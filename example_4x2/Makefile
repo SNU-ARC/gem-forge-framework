@@ -307,7 +307,7 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--l2tlb-size=2048 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=880 \
+	--walker-se-lat=1000 \
 	--walker-se-port=4 \
 	--num-cpus=8 \
 	--num-dirs=4 \
@@ -327,16 +327,16 @@ IO_SIM=--llvm-store-queue-size=4 \
 	--l1i_size=32kB \
 	--l1i_assoc=8 \
 	--l1d_size=32kB \
-	--l1d_lat=8 \
+	--l1d_lat=2 \
 	--l1d_mshrs=4 \
 	--l1d_assoc=8 \
-	--l1_5d_size=256kB \
-	--l1_5d_assoc=16 \
-	--l1_5d_mshrs=8 \
-	--l2_lat=17 \
-	--l2_size=1MB \
+	--l1_5d_size=32kB \
+	--l1_5d_assoc=8 \
+	--l1_5d_mshrs=4 \
+	--l2_lat=1 \
+	--l2_size=256kB \
 	--l2_assoc=16 \
-	--l3_lat=74 \
+	--l3_lat=19 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
@@ -475,7 +475,7 @@ sim-o3: valid.o8.sim valid.o8-pf.sim stream.o8.sim stream.o8-float.sim psp.o8.si
 	echo "Simulation O3 core all done!"
 
 .PHONY: sim-io
-sim-io: valid.io.sim valid.io-pf.sim stream.io.sim stream.io-float.sim psp.io.sim psp.io-pf.sim uve_proxy.io-pf.sim
+sim-io: valid.io.sim valid.io-pf.sim psp.io.sim psp.io-pf.sim uve_proxy.io-pf.sim
 	echo "Simulation IO core all done!"
 
 .PHONY: sim-all
