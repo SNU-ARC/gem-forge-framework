@@ -281,7 +281,7 @@ uve_proxy.local-pf8.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > uve_proxy.io-pf8.log
+		--gem-forge-prefetcher=stride > uve_proxy.local-pf8.log
 
 .PHONY: uve_proxy.local-pf16.sim
 uve_proxy.local-pf16.sim: psp.exe
@@ -300,7 +300,7 @@ uve_proxy.local-pf16.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=16 \
 		--gem-forge-psp-backend-prefetch-distance=16 \
-		--gem-forge-prefetcher=stride > uve_proxy.io-pf16.log
+		--gem-forge-prefetcher=stride > uve_proxy.local-pf16.log
 
 IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--llvm-load-queue-size=4 \
