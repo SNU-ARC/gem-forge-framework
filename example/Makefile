@@ -403,7 +403,7 @@ psp.iommu-pf.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-total-pattern-table-entries=4 \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-frontend-pa-queue-capacity=2 \
 		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-data-prefetch-only \
 		--gem-forge-psp-backend-enable \
