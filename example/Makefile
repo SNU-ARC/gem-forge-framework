@@ -119,7 +119,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=16
+THREADS=1
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/youtube'
 ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
@@ -161,7 +161,7 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--num-cpus=${THREADS} \
 	--num-dirs=4 \
 	--num-l2caches=${THREADS} \
-	--mesh-rows=4 \
+	--mesh-rows=1 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -182,6 +182,7 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--l2_size=256kB \
 	--l2_assoc=16 \
 	--l2_lat=20 \
+	--l2_mshrs=20 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
@@ -238,7 +239,7 @@ psp.local-pf.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-total-pattern-table-entries=4 \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=4 \
+		--gem-forge-psp-frontend-pa-queue-capacity=2 \
 		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-data-prefetch-only \
 		--gem-forge-psp-backend-enable \
@@ -276,8 +277,7 @@ uve_proxy.local-pf8.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=8 \
-		--gem-forge-psp-tlb-prefetch-only \
-		--gem-forge-psp-data-prefetch-only \
+		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
@@ -295,8 +295,7 @@ uve_proxy.local-pf16.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=16 \
-		--gem-forge-psp-tlb-prefetch-only \
-		--gem-forge-psp-data-prefetch-only \
+		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=16 \
 		--gem-forge-psp-backend-prefetch-distance=16 \
@@ -348,6 +347,7 @@ IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--l2_size=256kB \
 	--l2_assoc=16 \
 	--l2_lat=20 \
+	--l2_mshrs=20 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
 
