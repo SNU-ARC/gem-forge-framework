@@ -1,5 +1,5 @@
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
 FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
@@ -119,7 +119,7 @@ clean-all: clean
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
-THREADS=1
+THREADS=16
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/youtube'
 ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
@@ -161,7 +161,7 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--num-cpus=${THREADS} \
 	--num-dirs=4 \
 	--num-l2caches=${THREADS} \
-	--mesh-rows=1 \
+	--mesh-rows=4 \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -323,9 +323,9 @@ IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=820 \
 	--walker-se-port=2 \
-	--num-cpus=8 \
+	--num-cpus=${THREADS} \
 	--num-dirs=4 \
-	--num-l2caches=8 \
+	--num-l2caches=${THREADS} \
 	--mesh-rows=4 \
 	--ruby \
 	--access-backing-store \
