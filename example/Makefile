@@ -1,5 +1,5 @@
-#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
-SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
+SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/trusted_spmm_csr.c
+#SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
 FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
@@ -240,7 +240,6 @@ psp.local-pf.sim: psp.exe
 		--gem-forge-psp-frontend-total-pattern-table-entries=4 \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=2 \
-		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-data-prefetch-only \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
@@ -404,7 +403,6 @@ psp.iommu-pf.sim: psp.exe
 		--gem-forge-psp-frontend-total-pattern-table-entries=4 \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=2 \
-		--gem-forge-psp-tlb-prefetch-only \
 		--gem-forge-psp-data-prefetch-only \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
@@ -441,8 +439,7 @@ uve_proxy.iommu-pf8.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=8 \
-		--gem-forge-psp-tlb-prefetch-only \
-		--gem-forge-psp-data-prefetch-only \
+		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
@@ -460,8 +457,7 @@ uve_proxy.iommu-pf16.sim: psp.exe
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
 		--gem-forge-psp-frontend-pa-queue-capacity=16 \
-		--gem-forge-psp-tlb-prefetch-only \
-		--gem-forge-psp-data-prefetch-only \
+		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=16 \
 		--gem-forge-psp-backend-prefetch-distance=16 \
