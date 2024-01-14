@@ -2,8 +2,9 @@ SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/tru
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_sddmm_csr/trusted_sddmm_csr.c
 #SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/searchwithoptgraph/searchwithoptgraph.cpp
 
-FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
-PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c11 -gline-tables-only
+FLAGS=-O3 -DGEM_FORGE -DPTTIME -mavx -fopenmp -std=c11 -gline-tables-only
+PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -DPTTIME -mavx -fopenmp -std=c11 -gline-tables-only
+SSP_FLAGS=-O3 -DSSP -DGEM_FORGE -DPTTIME -DDIM=128 -mavx -fopenmp -std=c11 -gline-tables-only
 #FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 #PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 
@@ -47,8 +48,21 @@ psp_raw.ll: psp_raw.bc
 psp_raw.S: psp_raw.ll
 	${LLVM_ASM} $^ -o $@
 
+# Gem Forge requires the bitcode named.
+ssp_raw.bc: ${SRC}
+	${CC} $^ ${SSP_FLAGS} -c -emit-llvm -I${GEM5_INC} -o $@
+	${OPT} -instnamer $@ -o $@
+
+ssp_raw.ll: ssp_raw.bc
+	${LLVM_DIS} $^ -o $@
+
+# Generate assembly code from IR
+ssp_raw.S: ssp_raw.ll
+	${LLVM_ASM} $^ -o $@
+
 INST_UID=inst.uid
 PSP_INST_UID=psp_inst.uid
+SSP_INST_UID=ssp_inst.uid
 TRACE_FUNC=.omp_outlined.
 TRACE_FILE=fake.trace
 
@@ -58,6 +72,10 @@ traced.bc: raw.bc
 
 psp_traced.bc: psp_raw.bc
 	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${PSP_INST_UID} -trace-function ${TRACE_FUNC}
+	touch ${TRACE_FILE}
+
+ssp_traced.bc: ssp_raw.bc
+	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -trace-pass $^ -o $@ -trace-inst-uid-file ${SSP_INST_UID} -trace-function ${TRACE_FUNC}
 	touch ${TRACE_FILE}
 
 VALID_OUT=valid
@@ -75,16 +93,16 @@ valid.bc: traced.bc raw.bc
 
 STREAM_OUT=stream
 STREAM_EXTRA=stream/extra
-stream.bc: traced.bc raw.bc
+stream.bc: ssp_traced.bc ssp_raw.bc
 	mkdir -p ${STREAM_OUT}
 	mkdir -p ${STREAM_EXTRA}
 	${OPT} -load=${GEM_FORGE_TRANSFORM_SO} -stream-execution-static-pass \
 		-stream-pass-choose-strategy=static-outer \
 		-stream-pass-allow-aliased-stream \
 		-stream-pass-enable-store \
-		raw.bc -o $@ \
+		ssp_raw.bc -o $@ \
 		-gem-forge-roi-function=${TRACE_FUNC} \
-		-gem-forge-inst-uid-file=${INST_UID} \
+		-gem-forge-inst-uid-file=${SSP_INST_UID} \
 		-output-datagraph=${STREAM_OUT}/fake.0.tdg \
 		-output-extra-folder-path=${STREAM_EXTRA}
 	cp ${STREAM_EXTRA}/ex.bc $@
@@ -110,7 +128,7 @@ psp.bc: psp_traced.bc psp_raw.bc
 
 .PHONY: clean
 clean:
-	rm -f *.bc *.ll *.o *.exe ${INST_UID} *.txt  *.trace *.S
+	rm -f *.bc *.ll *.o *.exe ${INST_UID} ${SSP_INST_UID} ${PSP_INST_UID} *.txt  *.trace *.S
 
 .PHONY: clean-all
 clean-all: clean
@@ -122,8 +140,8 @@ GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 THREADS=16
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/youtube'
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
-#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-products'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-products'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/reddit'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/yelp'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/reddit_feat_1024'
@@ -156,7 +174,7 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--l2tlb-size=1024 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
-	--walker-se-lat=640 \
+	--walker-se-lat=110 \
 	--walker-se-port=2 \
 	--num-cpus=${THREADS} \
 	--num-dirs=4 \
@@ -213,7 +231,6 @@ psp.local-tlb.sim: psp.exe
 		--outdir=${PSP_OUT}/local-tlb \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
-		--debug-flags=PSPFrontend \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${LOCAL_WALK_SIM} \
@@ -299,6 +316,23 @@ uve_proxy.local-pf16.sim: psp.exe
 		--gem-forge-psp-backend-num-stream-entry=16 \
 		--gem-forge-psp-backend-prefetch-distance=16 \
 		--gem-forge-prefetcher=stride > uve_proxy.local-pf16.log
+
+.PHONY: stream.local.sim
+stream.local.sim: stream.exe
+	cp $^ ${STREAM_EXTRA}/
+	${GEM5} \
+		--outdir=${STREAM_OUT}/local \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=${STREAM_EXTRA}/$^ \
+		${LOCAL_WALK_SIM} \
+		--gem-forge-prefetcher=stride \
+		--gem-forge-stream-engine-enable \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-enable-lsq \
+		--gem-forge-stream-engine-enable-coalesce \
+		--gem-forge-stream-engine-throttling=global > stream.local.log
 
 IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--llvm-load-queue-size=4 \
@@ -463,14 +497,31 @@ uve_proxy.iommu-pf16.sim: psp.exe
 		--gem-forge-psp-backend-prefetch-distance=16 \
 		--gem-forge-prefetcher=stride > uve_proxy.iommu-pf16.log
 
+.PHONY: stream.iommu.sim
+stream.iommu.sim: stream.exe
+	cp $^ ${STREAM_EXTRA}/
+	${GEM5} \
+		--outdir=${STREAM_OUT}/iommu \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=${STREAM_EXTRA}/$^ \
+		${IOMMU_WALK_SIM} \
+		--gem-forge-prefetcher=stride \
+		--gem-forge-stream-engine-enable \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-enable-lsq \
+		--gem-forge-stream-engine-enable-coalesce \
+		--gem-forge-stream-engine-throttling=global > stream.iommu.log
+
 .PHONY: sim-local-walk
-sim-local-walk: valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim uve_proxy.local-pf8.sim uve_proxy.local-pf16.sim
+sim-local-walk: valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local.sim
 	echo "Simulation IO core (Local Page Walk) all done!"
 
 .PHONY: sim-iommu-walk
-sim-iommu-walk: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim uve_proxy.iommu-pf8.sim uve_proxy.iommu-pf16.sim
+sim-iommu-walk: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim
 	echo "Simulation IO core (IOMMU Page Walk) all done!"
 
 .PHONY: sim-all
-sim-all: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim uve_proxy.iommu-pf8.sim uve_proxy.iommu-pf16.sim valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim uve_proxy.local-pf8.sim uve_proxy.local-pf16.sim
+sim-all: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.iommu.sim
 	echo "Simulation all done!"
