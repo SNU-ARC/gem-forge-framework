@@ -523,5 +523,5 @@ sim-iommu-walk: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-p
 	echo "Simulation IO core (IOMMU Page Walk) all done!"
 
 .PHONY: sim-all
-sim-all: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.iommu.sim
+sim-all: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local.sim
 	echo "Simulation all done!"
