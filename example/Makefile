@@ -5,6 +5,7 @@ SRC=${GEM_FORGE_TOP}/transform/benchmark/GemForgeMicroSuite/trusted_spmm_csr/tru
 FLAGS=-O3 -DGEM_FORGE -DPTTIME -mavx -fopenmp -std=c11 -gline-tables-only
 PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -DPTTIME -mavx -fopenmp -std=c11 -gline-tables-only
 SSP_FLAGS=-O3 -DSSP -DGEM_FORGE -DPTTIME -DDIM=128 -mavx -fopenmp -std=c11 -gline-tables-only
+#SSP_FLAGS=-O3 -DSSP -DGEM_FORGE -DPTTIME -mavx -fopenmp -std=c11 -gline-tables-only
 #FLAGS=-O3 -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 #PSP_FLAGS=-O3 -DPSP -DGEM_FORGE -mavx -fopenmp -std=c++11 -gline-tables-only
 
@@ -132,16 +133,17 @@ clean:
 
 .PHONY: clean-all
 clean-all: clean
-	rm -rf valid stream psp uve_proxy
+	rm -rf valid stream psp ssp_proxy
 
 GEM5=${GEM_FORGE_TOP}/gem5/build/X86/gem5.opt
 GEM5_CONFIG=${GEM_FORGE_TOP}/gem5/configs/example/gem_forge/run.py
 
 THREADS=16
-#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
+ROWS=4
+ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/harvard'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/youtube'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-mag'
-ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-products'
+#ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/ogbn-products'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/reddit'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/yelp'
 #ARGUMENTS='${THREADS} ${GEM_FORGE_TOP}/dataset/graph/reddit_feat_1024'
@@ -165,21 +167,21 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=MinorCPU \
-	--llvm-issue-width=2 \
+	--llvm-issue-width=4 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
 	--l1tlb-size=64 \
 	--l1tlb-assoc=4 \
-	--l2tlb-size=1024 \
+	--l2tlb-size=512 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=110 \
-	--walker-se-port=2 \
+	--walker-se-port=4 \
 	--num-cpus=${THREADS} \
 	--num-dirs=4 \
 	--num-l2caches=${THREADS} \
-	--mesh-rows=4 \
+	--mesh-rows=${ROWS} \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -195,11 +197,11 @@ LOCAL_WALK_SIM=--llvm-store-queue-size=4 \
 	--l1i_assoc=8 \
 	--l1d_size=32kB \
 	--l1d_lat=2 \
-	--l1d_mshrs=4 \
+	--l1d_mshrs=8 \
 	--l1d_assoc=8 \
 	--l2_size=256kB \
 	--l2_assoc=16 \
-	--l2_lat=20 \
+	--l2_lat=20\
 	--l2_mshrs=20 \
 	--fast-forward=-1 \
 	--options=${ARGUMENTS}
@@ -212,18 +214,45 @@ valid.local.sim: valid.exe
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
-		${LOCAL_WALK_SIM} > valid.local.log
+		${LOCAL_WALK_SIM} \
+		> valid.local.log
 
-.PHONY: valid.local-pf.sim
-valid.local-pf.sim: valid.exe
+.PHONY: valid.local-stride-pf.sim
+valid.local-stride-pf.sim: valid.exe
 	${GEM5} \
-		--outdir=${VALID_OUT}/local-pf \
+		--outdir=${VALID_OUT}/local-stride-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${LOCAL_WALK_SIM} \
-		--gem-forge-prefetcher=stride > valid.local-pf.log
+		--gem-forge-prefetcher=stride \
+		> valid.local-stride-pf.log
+
+.PHONY: valid.local-bingo-pf.sim
+valid.local-bingo-pf.sim: valid.exe
+	${GEM5} \
+		--outdir=${VALID_OUT}/local-bingo-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${LOCAL_WALK_SIM} \
+		--gem-forge-prefetcher=bingo \
+		> valid.local-bingo-pf.log
+
+.PHONY: valid.local-imp-pf.sim
+valid.local-imp-pf.sim: valid.exe
+	${GEM5} \
+		--outdir=${VALID_OUT}/local-imp-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${LOCAL_WALK_SIM} \
+		--gem-forge-prefetch-on-access \
+		--gem-forge-prefetcher=imp \
+		> valid.local-imp-pf.log
 
 .PHONY: psp.local-tlb.sim
 psp.local-tlb.sim: psp.exe
@@ -242,7 +271,8 @@ psp.local-tlb.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.local-tlb.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.local-tlb.log
 
 .PHONY: psp.local-pf.sim
 psp.local-pf.sim: psp.exe
@@ -261,7 +291,8 @@ psp.local-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.local-pf.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.local-pf.log
 
 .PHONY: psp.local-tlb-pf.sim
 psp.local-tlb-pf.sim: psp.exe
@@ -279,12 +310,17 @@ psp.local-tlb-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.local-tlb-pf.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.local-tlb-pf.log
+#		--debug-flags=MinorCPU \
+#		--debug-flags=MinorMem \
+#		--debug-flags=Drain \
+#		--debug-flags=Quiesce \
 
-.PHONY: uve_proxy.local-pf8.sim
-uve_proxy.local-pf8.sim: psp.exe
+.PHONY: ssp_proxy.local-little-pf.sim
+ssp_proxy.local-little-pf.sim: psp.exe
 	${GEM5} \
-		--outdir=uve_proxy/local-pf8 \
+		--outdir=ssp_proxy/local-little-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
@@ -292,17 +328,23 @@ uve_proxy.local-pf8.sim: psp.exe
 		${LOCAL_WALK_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=8 \
+		--gem-forge-psp-frontend-pa-queue-capacity=32 \
 		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-num-stream-entry=8 \
+		--gem-forge-psp-backend-num-stream-entry=32 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > uve_proxy.local-pf8.log
+		--gem-forge-psp-queue-size=2 \
+		> ssp_proxy.local-little-pf.log
+#		--debug-flags=MinorCPU \
+#		--debug-flags=MinorCPUDelegator \
+#		--debug-flags=MinorMem \
+#		--debug-flags=PSPFrontend \
+#		--debug-flags=PSPBackend \
 
-.PHONY: uve_proxy.local-pf16.sim
-uve_proxy.local-pf16.sim: psp.exe
+.PHONY: ssp_proxy.local-wide-pf.sim
+ssp_proxy.local-wide-pf.sim: psp.exe
 	${GEM5} \
-		--outdir=uve_proxy/local-pf16 \
+		--outdir=ssp_proxy/local-wide-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
@@ -310,12 +352,13 @@ uve_proxy.local-pf16.sim: psp.exe
 		${LOCAL_WALK_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=16 \
+		--gem-forge-psp-frontend-pa-queue-capacity=32 \
 		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-num-stream-entry=16 \
-		--gem-forge-psp-backend-prefetch-distance=16 \
-		--gem-forge-prefetcher=stride > uve_proxy.local-pf16.log
+		--gem-forge-psp-backend-num-stream-entry=32 \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-psp-queue-size=6 \
+		> ssp_proxy.local-wide-pf.log
 
 .PHONY: stream.local.sim
 stream.local.sim: stream.exe
@@ -327,12 +370,20 @@ stream.local.sim: stream.exe
 		${GEM5_CONFIG} \
 		--cmd=${STREAM_EXTRA}/$^ \
 		${LOCAL_WALK_SIM} \
-		--gem-forge-prefetcher=stride \
 		--gem-forge-stream-engine-enable \
-		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-total-run-ahead-length=2048 \
+		--gem-forge-stream-engine-total-run-ahead-bytes=4096 \
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
-		--gem-forge-stream-engine-throttling=global > stream.local.log
+		--gem-forge-psp-queue-size=2 \
+		--gem-forge-stream-engine-throttling=global \
+		> stream.local.log
+#		--debug-flags=MinorCPUDelegator \
+#		--debug-flags=StreamEngineBase \
+#		--debug-flags=StreamElement \
+#		--debug-flags=ExecFunc \
+#		--debug-flags=StreamBase \
+	
 
 IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--llvm-load-queue-size=4 \
@@ -345,21 +396,21 @@ IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--link-width-bits=256 \
 	--llc-select-low-bit=6 \
 	--cpu-type=MinorCPU \
-	--llvm-issue-width=2 \
+	--llvm-issue-width=4 \
 	--gem-forge-enable-func-acc-tick \
 	--prog-interval=10000 \
 	--tlb-timing-se \
 	--l1tlb-size=64 \
 	--l1tlb-assoc=4 \
-	--l2tlb-size=1024 \
+	--l2tlb-size=512 \
 	--l2tlb-assoc=16 \
 	--l2tlb-hit-lat=8 \
 	--walker-se-lat=820 \
-	--walker-se-port=2 \
+	--walker-se-port=4 \
 	--num-cpus=${THREADS} \
 	--num-dirs=4 \
 	--num-l2caches=${THREADS} \
-	--mesh-rows=4 \
+	--mesh-rows=${ROWS} \
 	--ruby \
 	--access-backing-store \
 	--network=garnet2.0 \
@@ -375,7 +426,7 @@ IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
 	--l1i_assoc=8 \
 	--l1d_size=32kB \
 	--l1d_lat=2 \
-	--l1d_mshrs=4 \
+	--l1d_mshrs=8 \
 	--l1d_assoc=8 \
 	--l2_size=256kB \
 	--l2_assoc=16 \
@@ -392,18 +443,45 @@ valid.iommu.sim: valid.exe
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
-		${IOMMU_WALK_SIM} > valid.iommu.log
+		${IOMMU_WALK_SIM} \
+		> valid.iommu.log
 
-.PHONY: valid.iommu-pf.sim
-valid.iommu-pf.sim: valid.exe
+.PHONY: valid.iommu-stride-pf.sim
+valid.iommu-stride-pf.sim: valid.exe
 	${GEM5} \
-		--outdir=${VALID_OUT}/iommu-pf \
+		--outdir=${VALID_OUT}/iommu-stride-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=$^ \
 		${IOMMU_WALK_SIM} \
-		--gem-forge-prefetcher=stride > valid.iommu-pf.log
+		--gem-forge-prefetcher=stride \
+		> valid.iommu-stride-pf.log
+
+.PHONY: valid.iommu-bingo-pf.sim
+valid.iommu-bingo-pf.sim: valid.exe
+	${GEM5} \
+		--outdir=${VALID_OUT}/iommu-bingo-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${IOMMU_WALK_SIM} \
+		--gem-forge-prefetcher=bingo \
+		> valid.iommu-bingo-pf.log
+
+.PHONY: valid.iommu-imp-pf.sim
+valid.iommu-imp-pf.sim: valid.exe
+	${GEM5} \
+		--outdir=${VALID_OUT}/iommu-imp-pf \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=$^ \
+		${IOMMU_WALK_SIM} \
+		--gem-forge-prefetch-on-access \
+		--gem-forge-prefetcher=imp \
+		> valid.iommu-imp-pf.log
 
 .PHONY: psp.iommu-tlb.sim
 psp.iommu-tlb.sim: psp.exe
@@ -422,7 +500,8 @@ psp.iommu-tlb.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.iommu-tlb.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.iommu-tlb.log
 
 .PHONY: psp.iommu-pf.sim
 psp.iommu-pf.sim: psp.exe
@@ -441,7 +520,8 @@ psp.iommu-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.iommu-pf.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.iommu-pf.log
 
 .PHONY: psp.iommu-tlb-pf.sim
 psp.iommu-tlb-pf.sim: psp.exe
@@ -459,12 +539,13 @@ psp.iommu-tlb-pf.sim: psp.exe
 		--gem-forge-psp-backend-enable \
 		--gem-forge-psp-backend-num-stream-entry=8 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > psp.iommu-tlb-pf.log
+		--gem-forge-psp-queue-size=2 \
+		> psp.iommu-tlb-pf.log
 
-.PHONY: uve_proxy.iommu-pf8.sim
-uve_proxy.iommu-pf8.sim: psp.exe
+.PHONY: ssp_proxy.iommu-little-pf.sim
+ssp_proxy.iommu-little-pf.sim: psp.exe
 	${GEM5} \
-		--outdir=uve_proxy/iommu-pf8 \
+		--outdir=ssp_proxy/iommu-little-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
@@ -472,17 +553,18 @@ uve_proxy.iommu-pf8.sim: psp.exe
 		${IOMMU_WALK_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=8 \
+		--gem-forge-psp-frontend-pa-queue-capacity=32 \
 		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-num-stream-entry=8 \
+		--gem-forge-psp-backend-num-stream-entry=32 \
 		--gem-forge-psp-backend-prefetch-distance=8 \
-		--gem-forge-prefetcher=stride > uve_proxy.iommu-pf8.log
+		--gem-forge-psp-queue-size=2 \
+		> ssp_proxy.iommu-little-pf.log
 
-.PHONY: uve_proxy.iommu-pf16.sim
-uve_proxy.iommu-pf16.sim: psp.exe
+.PHONY: ssp_proxy.iommu-wide-pf.sim
+ssp_proxy.iommu-wide-pf.sim: psp.exe
 	${GEM5} \
-		--outdir=uve_proxy/iommu-pf16 \
+		--outdir=ssp_proxy/iommu-wide-pf \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
@@ -490,12 +572,13 @@ uve_proxy.iommu-pf16.sim: psp.exe
 		${IOMMU_WALK_SIM} \
 		--gem-forge-psp-frontend-enable \
 		--gem-forge-psp-frontend-index-queue-capacity=64 \
-		--gem-forge-psp-frontend-pa-queue-capacity=16 \
+		--gem-forge-psp-frontend-pa-queue-capacity=32 \
 		--gem-forge-uve-proxy \
 		--gem-forge-psp-backend-enable \
-		--gem-forge-psp-backend-num-stream-entry=16 \
-		--gem-forge-psp-backend-prefetch-distance=16 \
-		--gem-forge-prefetcher=stride > uve_proxy.iommu-pf16.log
+		--gem-forge-psp-backend-num-stream-entry=32 \
+		--gem-forge-psp-backend-prefetch-distance=8 \
+		--gem-forge-psp-queue-size=6 \
+		> ssp_proxy.iommu-wide-pf.log
 
 .PHONY: stream.iommu.sim
 stream.iommu.sim: stream.exe
@@ -507,21 +590,21 @@ stream.iommu.sim: stream.exe
 		${GEM5_CONFIG} \
 		--cmd=${STREAM_EXTRA}/$^ \
 		${IOMMU_WALK_SIM} \
-		--gem-forge-prefetcher=stride \
 		--gem-forge-stream-engine-enable \
-		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
+		--gem-forge-psp-queue-size=2 \
 		--gem-forge-stream-engine-throttling=global > stream.iommu.log
 
 .PHONY: sim-local-walk
-sim-local-walk: valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local.sim
+sim-local-walk: valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim
 	echo "Simulation IO core (Local Page Walk) all done!"
 
 .PHONY: sim-iommu-walk
-sim-iommu-walk: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim
+sim-iommu-walk: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim
 	echo "Simulation IO core (IOMMU Page Walk) all done!"
 
 .PHONY: sim-all
-sim-all: valid.iommu.sim valid.iommu-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu.sim valid.local.sim valid.local-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local.sim
+sim-all: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim
 	echo "Simulation all done!"
