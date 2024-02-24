@@ -360,29 +360,42 @@ ssp_proxy.local-wide-pf.sim: psp.exe
 		--gem-forge-psp-queue-size=6 \
 		> ssp_proxy.local-wide-pf.log
 
-.PHONY: stream.local.sim
-stream.local.sim: stream.exe
+.PHONY: stream.local-little.sim
+stream.local-little.sim: stream.exe
 	cp $^ ${STREAM_EXTRA}/
 	${GEM5} \
-		--outdir=${STREAM_OUT}/local \
+		--outdir=${STREAM_OUT}/local-little \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		--debug-flags=StreamThrottle \
+		${GEM5_CONFIG} \
+		--cmd=${STREAM_EXTRA}/$^ \
+		${LOCAL_WALK_SIM} \
+		--gem-forge-stream-engine-enable \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-enable-lsq \
+		--gem-forge-stream-engine-enable-coalesce \
+		--gem-forge-psp-queue-size=2 \
+		--gem-forge-stream-engine-throttling=global \
+		> stream.local-little.log
+
+.PHONY: stream.local-wide.sim
+stream.local-wide.sim: stream.exe
+	cp $^ ${STREAM_EXTRA}/
+	${GEM5} \
+		--outdir=${STREAM_OUT}/local-wide \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=${STREAM_EXTRA}/$^ \
 		${LOCAL_WALK_SIM} \
 		--gem-forge-stream-engine-enable \
-		--gem-forge-stream-engine-total-run-ahead-length=2048 \
-		--gem-forge-stream-engine-total-run-ahead-bytes=4096 \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
-		--gem-forge-psp-queue-size=2 \
+		--gem-forge-psp-queue-size=6 \
 		--gem-forge-stream-engine-throttling=global \
-		> stream.local.log
-#		--debug-flags=MinorCPUDelegator \
-#		--debug-flags=StreamEngineBase \
-#		--debug-flags=StreamElement \
-#		--debug-flags=ExecFunc \
-#		--debug-flags=StreamBase \
+		> stream.local-wide.log
 	
 
 IOMMU_WALK_SIM=--llvm-store-queue-size=4 \
@@ -580,31 +593,53 @@ ssp_proxy.iommu-wide-pf.sim: psp.exe
 		--gem-forge-psp-queue-size=6 \
 		> ssp_proxy.iommu-wide-pf.log
 
-.PHONY: stream.iommu.sim
-stream.iommu.sim: stream.exe
+.PHONY: stream.iommu-little.sim
+stream.iommu-little.sim: stream.exe
 	cp $^ ${STREAM_EXTRA}/
 	${GEM5} \
-		--outdir=${STREAM_OUT}/iommu \
+		--outdir=${STREAM_OUT}/iommu-little \
 		--stats-file=text://stats.txt?dumpAll=False \
 		--listener-mode=off \
 		${GEM5_CONFIG} \
 		--cmd=${STREAM_EXTRA}/$^ \
 		${IOMMU_WALK_SIM} \
 		--gem-forge-stream-engine-enable \
-		--gem-forge-stream-engine-total-run-ahead-bytes=2048 \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
 		--gem-forge-stream-engine-enable-lsq \
 		--gem-forge-stream-engine-enable-coalesce \
 		--gem-forge-psp-queue-size=2 \
-		--gem-forge-stream-engine-throttling=global > stream.iommu.log
+		--gem-forge-stream-engine-throttling=global \
+		> stream.iommu-little.log
+
+.PHONY: stream.iommu-wide.sim
+stream.iommu-wide.sim: stream.exe
+	cp $^ ${STREAM_EXTRA}/
+	${GEM5} \
+		--outdir=${STREAM_OUT}/iommu-wide \
+		--stats-file=text://stats.txt?dumpAll=False \
+		--listener-mode=off \
+		${GEM5_CONFIG} \
+		--cmd=${STREAM_EXTRA}/$^ \
+		${IOMMU_WALK_SIM} \
+		--gem-forge-stream-engine-enable \
+		--gem-forge-stream-engine-total-run-ahead-bytes=65536 \
+		--gem-forge-stream-engine-enable-lsq \
+		--gem-forge-stream-engine-enable-coalesce \
+		--gem-forge-psp-queue-size=6 \
+		--gem-forge-stream-engine-throttling=global \
+		> stream.iommu-wide.log
 
 .PHONY: sim-local-walk
-sim-local-walk: valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim
+sim-local-walk: valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local-little.sim stream.local-wide.sim
+#sim-local-walk: valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim stream.local-little.sim stream.local-wide.sim
 	echo "Simulation IO core (Local Page Walk) all done!"
 
 .PHONY: sim-iommu-walk
-sim-iommu-walk: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim
+sim-iommu-walk: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu-little.sim stream.iommu-wide.sim
+#sim-iommu-walk: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim stream.iommu-little.sim stream.iommu-wide.sim
 	echo "Simulation IO core (IOMMU Page Walk) all done!"
 
 .PHONY: sim-all
-sim-all: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim
+sim-all: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim stream.iommu-little.sim stream.iommu-wide.sim valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim stream.local-little.sim stream.local-wide.sim
+#sim-all: valid.iommu.sim valid.iommu-stride-pf.sim valid.iommu-imp-pf.sim valid.iommu-bingo-pf.sim psp.iommu-tlb.sim psp.iommu-pf.sim psp.iommu-tlb-pf.sim ssp_proxy.iommu-little-pf.sim ssp_proxy.iommu-wide-pf.sim stream.iommu-little.sim stream.iommu-wide.sim valid.local.sim valid.local-stride-pf.sim valid.local-imp-pf.sim valid.local-bingo-pf.sim psp.local-tlb.sim psp.local-pf.sim psp.local-tlb-pf.sim ssp_proxy.local-little-pf.sim ssp_proxy.local-wide-pf.sim stream.local-little.sim stream.local-wide.sim
 	echo "Simulation all done!"
